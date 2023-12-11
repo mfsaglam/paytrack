@@ -10,25 +10,25 @@ import XCTest
 @testable import InstallmentCalculator
 
 class CalculatorTest: XCTestCase {
-    func test_calculate_withNoInstallments_doesNotCalculate() {
+    func test_calculate_withNoInstallments_doesNotSendResult() {
         let delegate = CalculatorDelegateSpy()
         let sut = Calculator(delegate: delegate)
         
         sut.calculate(installments: [])
         
-        XCTAssertEqual(delegate.calculatedInstallmentsCount, 0)
+        XCTAssertEqual(delegate.receivedResultsCount, 0)
     }
     
-    func test_calculate_withOneInstallment_calculates() {
+    func test_calculate_withOneInstallment_sendsTheResult() {
         let delegate = CalculatorDelegateSpy()
         let sut = Calculator(delegate: delegate)
 
         sut.calculate(installments: [1])
 
-        XCTAssertEqual(delegate.calculatedInstallmentsCount, 1)
+        XCTAssertEqual(delegate.receivedResultsCount, 1)
     }
     
-    func test_calculate_withOneInstallment_sendsTheResult() {
+    func test_calculate_withOneInstallment_sendsTheCorrectResult() {
         let delegate = CalculatorDelegateSpy()
         let sut = Calculator(delegate: delegate)
 
@@ -37,7 +37,7 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.calculationResult, 2)
     }
     
-    func test_calculate_withOneInstallment_sendsTheResult_2() {
+    func test_calculate_withOneInstallment_sendsTheCorrectResult_2() {
         let delegate = CalculatorDelegateSpy()
         let sut = Calculator(delegate: delegate)
 
@@ -47,11 +47,11 @@ class CalculatorTest: XCTestCase {
     }
     
     private class CalculatorDelegateSpy: CalculatorDelegate {
-        var calculatedInstallmentsCount: Int = 0
+        var receivedResultsCount: Int = 0
         var calculationResult: Int = 0
         
         func result(_ result: Int) {
-            calculatedInstallmentsCount += 1
+            receivedResultsCount += 1
             calculationResult = result
         }
     }
