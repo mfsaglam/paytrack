@@ -20,7 +20,7 @@ class Calculator {
     
     func calculate(installments: [Int]) {
         if !installments.isEmpty {
-            delegate.result(1)
+            delegate.result(installments.first!)
         }
     }
 }
