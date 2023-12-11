@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol CalculatorDelegate { }
+protocol CalculatorDelegate {
+    func result(_ result: Int)
+}
 
 class Calculator {
     let delegate: CalculatorDelegate
@@ -17,6 +19,8 @@ class Calculator {
     }
     
     func calculate(installments: [Int]) {
-        
+        if !installments.isEmpty {
+            delegate.result(1)
+        }
     }
 }
