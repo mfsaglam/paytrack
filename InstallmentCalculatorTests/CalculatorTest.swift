@@ -10,9 +10,10 @@ import XCTest
 @testable import InstallmentCalculator
 
 class CalculatorTest: XCTestCase {
+    private let delegate = CalculatorDelegateSpy()
+
     func test_calculate_withNoInstallments_doesNotSendResult() {
-        let delegate = CalculatorDelegateSpy()
-        let sut = Calculator(delegate: delegate)
+        let sut = makeSUT(delegate: delegate)
         
         sut.calculate(installments: [])
         
@@ -20,8 +21,7 @@ class CalculatorTest: XCTestCase {
     }
     
     func test_calculate_withOneInstallment_sendsTheResult() {
-        let delegate = CalculatorDelegateSpy()
-        let sut = Calculator(delegate: delegate)
+        let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
             .init(monthlyPayment: 1, months: 1)
@@ -31,37 +31,46 @@ class CalculatorTest: XCTestCase {
     }
     
     func test_calculate_withOneInstallment_sendsTheCorrectResult() {
-        let delegate = CalculatorDelegateSpy()
-        let sut = Calculator(delegate: delegate)
+        let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
             .init(monthlyPayment: 1, months: 1)
         ])
+        
+        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
 
-        XCTAssertEqual(delegate.calculationResult, .init(totalNumber: 1, monthlyTotal: 1, totalAmount: 1))
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
     func test_calculate_withOneInstallment_sendsTheCorrectResult_2() {
-        let delegate = CalculatorDelegateSpy()
-        let sut = Calculator(delegate: delegate)
+        let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
             .init(monthlyPayment: 1, months: 1)
         ])
+        
+        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
 
-        XCTAssertEqual(delegate.calculationResult, .init(totalNumber: 1, monthlyTotal: 1, totalAmount: 1))
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
     func test_calculate_withTwoInstallments_sendsTheCorrectResult() {
-        let delegate = CalculatorDelegateSpy()
-        let sut = Calculator(delegate: delegate)
+        let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
             .init(monthlyPayment: 1, months: 1),
             .init(monthlyPayment: 2, months: 2)
         ])
+        
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 3, totalAmount: 5)
 
-        XCTAssertEqual(delegate.calculationResult, .init(totalNumber: 2, monthlyTotal: 3, totalAmount: 5))
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(delegate: CalculatorDelegate) -> Calculator {
+        Calculator(delegate: delegate)
     }
     
     private class CalculatorDelegateSpy: CalculatorDelegate {
