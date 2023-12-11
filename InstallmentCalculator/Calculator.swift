@@ -19,8 +19,8 @@ class Calculator {
     }
     
     func calculate(installments: [Int]) {
-        if !installments.isEmpty {
-            delegate.result(installments.first!)
+        if let firstInstallment = installments.first {
+            delegate.result(firstInstallment)
         }
     }
 }
