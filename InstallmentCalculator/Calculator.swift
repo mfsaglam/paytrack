@@ -52,15 +52,22 @@ class Calculator {
     
     func calculate(installments: [Installment]) {
         if !installments.isEmpty {
-            var result = CalculationResult()
-            result.monthlyTotal = installments.reduce(0, { partialResult, installment in
-                partialResult + installment.monthlyPayment
-            })
-            result.totalAmount = installments.reduce(0, { partialResult, installment in
-                partialResult + (installment.monthlyPayment * Double(installment.months))
-            })
-            result.totalNumber = installments.count
+            let result = calculateResult(for: installments)
             delegate.result(result)
         }
+    }
+    
+    private func calculateResult(
+        for installments: [Installment]
+    ) -> CalculationResult {
+        var result = CalculationResult()
+        result.monthlyTotal = installments.reduce(0, { partialResult, installment in
+            partialResult + installment.monthlyPayment
+        })
+        result.totalAmount = installments.reduce(0, { partialResult, installment in
+            partialResult + (installment.monthlyPayment * Double(installment.months))
+        })
+        result.totalNumber = installments.count
+        return result
     }
 }
