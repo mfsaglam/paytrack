@@ -71,7 +71,7 @@ class CalculatorTest: XCTestCase {
     func test_calculate_withOnePastInstallment_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
         let installments = [
-            makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo)
+            makeInstallment(months: 2, monthlyPayment: 1, paymentDate: .threeMonthsAgo)
         ]
 
         sut.calculate(installments: installments)
@@ -84,7 +84,7 @@ class CalculatorTest: XCTestCase {
     func test_calculate_withOnePastAndOneUpcomingInstallment_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
         let installments = [
-            makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo),
+            makeInstallment(months: 2, monthlyPayment: 1, paymentDate: .threeMonthsAgo),
             makeInstallment()
         ]
 
@@ -98,7 +98,7 @@ class CalculatorTest: XCTestCase {
     func test_calculate_withOnePastAndTwoUpcomingInstallments_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
         let installments = [
-            makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo),
+            makeInstallment(months: 2, monthlyPayment: 1, paymentDate: .threeMonthsAgo),
             makeInstallment(),
             makeInstallment()
         ]
@@ -110,6 +110,8 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
+    
+    
     // MARK: - Helpers
     
     private func makeSUT(delegate: CalculatorDelegate) -> Calculator {
@@ -119,12 +121,12 @@ class CalculatorTest: XCTestCase {
     private func makeInstallment(
         months: Int = 1,
         monthlyPayment: Double = 1,
-        date: InstallmentTestDate = .tomorrow
+        paymentDate: InstallmentTestDate? = nil
     ) -> Installment {
         var installment = Installment()
         installment.months = months
         installment.monthlyPayment = monthlyPayment
-        installment.dateAdded = Date(timeIntervalSinceNow: date.rawValue)
+        installment.paymentDate = paymentDate?.date
         
         return installment
     }
@@ -142,6 +144,11 @@ class CalculatorTest: XCTestCase {
     private enum InstallmentTestDate: TimeInterval {
         case tomorrow = 86400 // 24 hours
         case threeMonthsAgo = -7776000 // -90 days
+        case threeDaysFromNow = 259200 // 3 days
+        
+        var date: Date {
+            return Date(timeIntervalSinceNow: rawValue)
+        }
     }
 }
 

@@ -10,12 +10,12 @@ import Foundation
 struct Installment {
     var monthlyPayment: Double
     var months: Int
-    var dateAdded: Date?
+    var paymentDate: Date?
 
     init(monthlyPayment: Double = 0, months: Int = 0, dateAdded: Date? = nil) {
         self.monthlyPayment = monthlyPayment
         self.months = months
-        self.dateAdded = dateAdded
+        self.paymentDate = dateAdded
     }
 }
 
@@ -64,7 +64,7 @@ class Calculator {
         let currentDate = Date()
 
         return installments.filter { installment in
-            guard let dateAdded = installment.dateAdded else {
+            guard let dateAdded = installment.paymentDate else {
                 return true // Treat installments without dateAdded as past
             }
 
