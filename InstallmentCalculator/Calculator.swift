@@ -11,12 +11,8 @@ struct Installment {
     var monthlyPayment: Double
     var months: Int
     var dateAdded: Date?
-    
-    init(
-        monthlyPayment: Double = 0,
-        months: Int = 0,
-        dateAdded: Date? = nil
-    ) {
+
+    init(monthlyPayment: Double = 0, months: Int = 0, dateAdded: Date? = nil) {
         self.monthlyPayment = monthlyPayment
         self.months = months
         self.dateAdded = dateAdded
@@ -27,12 +23,8 @@ struct CalculationResult {
     var totalNumber: Int
     var monthlyTotal: Double
     var totalAmount: Double
-    
-    init(
-        totalNumber: Int = 0,
-        monthlyTotal: Double = 0,
-        totalAmount: Double = 0
-    ) {
+
+    init(totalNumber: Int = 0, monthlyTotal: Double = 0, totalAmount: Double = 0) {
         self.totalNumber = totalNumber
         self.monthlyTotal = monthlyTotal
         self.totalAmount = totalAmount
@@ -45,47 +37,38 @@ protocol CalculatorDelegate {
 
 class Calculator {
     let delegate: CalculatorDelegate
-    
+
     init(delegate: CalculatorDelegate) {
         self.delegate = delegate
     }
-    
+
     func calculate(installments: [Installment]) {
         if !installments.isEmpty {
             let result = calculateResult(for: installments)
             delegate.result(result)
         }
     }
-    
-    private func calculateResult(
-        for installments: [Installment]
-    ) -> CalculationResult {
+
+    private func calculateResult(for installments: [Installment]) -> CalculationResult {
         let filteredInstallments = filterPastInstallments(installments)
-        
+
         var result = CalculationResult()
-        result.monthlyTotal = filteredInstallments.reduce(0, { partialResult, installment in
-            partialResult + installment.monthlyPayment
-        })
-        result.totalAmount = filteredInstallments.reduce(0, { partialResult, installment in
-            partialResult + (installment.monthlyPayment * Double(installment.months))
-        })
+        result.monthlyTotal = filteredInstallments.reduce(0) { $0 + $1.monthlyPayment }
+        result.totalAmount = filteredInstallments.reduce(0) { $0 + ($1.monthlyPayment * Double($1.months)) }
         result.totalNumber = filteredInstallments.count
-        
+
         return result
     }
-    
-    private func filterPastInstallments(
-        _ installments: [Installment]
-    ) -> [Installment] {
+
+    private func filterPastInstallments(_ installments: [Installment]) -> [Installment] {
         let currentDate = Date()
-        
+
         return installments.filter { installment in
             guard let dateAdded = installment.dateAdded else {
-                return true
+                return true // Treat installments without dateAdded as past
             }
-            
+
             return dateAdded >= currentDate
         }
     }
-
 }
