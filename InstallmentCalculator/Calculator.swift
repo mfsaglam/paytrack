@@ -60,14 +60,32 @@ class Calculator {
     private func calculateResult(
         for installments: [Installment]
     ) -> CalculationResult {
+        let filteredInstallments = filterPastInstallments(installments)
+        
         var result = CalculationResult()
-        result.monthlyTotal = installments.reduce(0, { partialResult, installment in
+        result.monthlyTotal = filteredInstallments.reduce(0, { partialResult, installment in
             partialResult + installment.monthlyPayment
         })
-        result.totalAmount = installments.reduce(0, { partialResult, installment in
+        result.totalAmount = filteredInstallments.reduce(0, { partialResult, installment in
             partialResult + (installment.monthlyPayment * Double(installment.months))
         })
-        result.totalNumber = installments.count
+        result.totalNumber = filteredInstallments.count
+        
         return result
     }
+    
+    private func filterPastInstallments(
+        _ installments: [Installment]
+    ) -> [Installment] {
+        let currentDate = Date()
+        
+        return installments.filter { installment in
+            guard let dateAdded = installment.dateAdded else {
+                return true
+            }
+            
+            return dateAdded >= currentDate
+        }
+    }
+
 }

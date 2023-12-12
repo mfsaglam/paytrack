@@ -67,6 +67,45 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
+    func test_calculate_withOnePastInstallment_shouldNotCalculatePastInstallment() {
+        let sut = makeSUT(delegate: delegate)
+
+        sut.calculate(installments: [
+            makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo)
+        ])
+
+        let expectedResult = CalculationResult(totalNumber: 0, monthlyTotal: 0, totalAmount: 0)
+
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
+    }
+    
+    func test_calculate_withOnePastAndOneUpcomingInstallment_shouldNotCalculatePastInstallment() {
+        let sut = makeSUT(delegate: delegate)
+
+        sut.calculate(installments: [
+            makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo),
+            makeInstallment()
+        ])
+
+        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
+
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
+    }
+    
+    func test_calculate_withOnePastAndTwoUpcomingInstallments_shouldNotCalculatePastInstallment() {
+        let sut = makeSUT(delegate: delegate)
+
+        sut.calculate(installments: [
+            makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo),
+            makeInstallment(),
+            makeInstallment()
+        ])
+
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2)
+
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(delegate: CalculatorDelegate) -> Calculator {
@@ -94,6 +133,11 @@ class CalculatorTest: XCTestCase {
             receivedResultsCount += 1
             calculationResult = result
         }
+    }
+    
+    private enum InstallmentTestDate: TimeInterval {
+        case tomorrow = 86400 // 24 hours
+        case threeMonthsAgo = -7776000 // -90 days
     }
 }
 
