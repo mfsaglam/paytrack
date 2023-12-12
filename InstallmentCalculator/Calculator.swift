@@ -8,8 +8,19 @@
 import Foundation
 
 struct Installment {
-    let monthlyPayment: Double
-    let months: Int
+    var monthlyPayment: Double
+    var months: Int
+    var dateAdded: Date?
+    
+    init(
+        monthlyPayment: Double = 0,
+        months: Int = 0,
+        dateAdded: Date? = nil
+    ) {
+        self.monthlyPayment = monthlyPayment
+        self.months = months
+        self.dateAdded = dateAdded
+    }
 }
 
 struct CalculationResult {

@@ -20,21 +20,21 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.receivedResultsCount, 0)
     }
     
-    func test_calculate_withOneInstallment_sendsTheResult() {
+    func test_calculate_withOneUpcomingInstallment_sendsTheResult() {
         let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
-            .init(monthlyPayment: 1, months: 1)
+            makeInstallment()
         ])
 
         XCTAssertEqual(delegate.receivedResultsCount, 1)
     }
     
-    func test_calculate_withOneInstallment_sendsTheCorrectResult() {
+    func test_calculate_withOneUpcomingInstallment_sendsTheCorrectResult() {
         let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
-            .init(monthlyPayment: 1, months: 1)
+            makeInstallment()
         ])
         
         let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
@@ -42,11 +42,11 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
-    func test_calculate_withOneInstallment_sendsTheCorrectResult_2() {
+    func test_calculate_withOneUpcomingInstallment_sendsTheCorrectResult_2() {
         let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
-            .init(monthlyPayment: 1, months: 1)
+            makeInstallment()
         ])
         
         let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
@@ -54,12 +54,12 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
-    func test_calculate_withTwoInstallments_sendsTheCorrectResult() {
+    func test_calculate_withTwoUpcomingInstallments_sendsTheCorrectResult() {
         let sut = makeSUT(delegate: delegate)
 
         sut.calculate(installments: [
-            .init(monthlyPayment: 1, months: 1),
-            .init(monthlyPayment: 2, months: 2)
+            makeInstallment(),
+            makeInstallment(months: 2, monthlyPayment: 2)
         ])
         
         let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 3, totalAmount: 5)
@@ -73,6 +73,19 @@ class CalculatorTest: XCTestCase {
         Calculator(delegate: delegate)
     }
     
+    private func makeInstallment(
+        months: Int = 1,
+        monthlyPayment: Double = 1,
+        date: InstallmentTestDate = .tomorrow
+    ) -> Installment {
+        var installment = Installment()
+        installment.months = months
+        installment.monthlyPayment = monthlyPayment
+        installment.dateAdded = Date(timeIntervalSinceNow: date.rawValue)
+        
+        return installment
+    }
+
     private class CalculatorDelegateSpy: CalculatorDelegate {
         var receivedResultsCount: Int = 0
         var calculationResult: CalculationResult? = nil
