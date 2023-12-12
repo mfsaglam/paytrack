@@ -56,11 +56,12 @@ class CalculatorTest: XCTestCase {
     
     func test_calculate_withTwoUpcomingInstallments_sendsTheCorrectResult() {
         let sut = makeSUT(delegate: delegate)
-
-        sut.calculate(installments: [
+        let installments = [
             makeInstallment(),
             makeInstallment(months: 2, monthlyPayment: 2)
-        ])
+        ]
+
+        sut.calculate(installments: installments)
         
         let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 3, totalAmount: 5)
 
@@ -69,10 +70,11 @@ class CalculatorTest: XCTestCase {
     
     func test_calculate_withOnePastInstallment_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
-
-        sut.calculate(installments: [
+        let installments = [
             makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo)
-        ])
+        ]
+
+        sut.calculate(installments: installments)
 
         let expectedResult = CalculationResult(totalNumber: 0, monthlyTotal: 0, totalAmount: 0)
 
@@ -81,11 +83,12 @@ class CalculatorTest: XCTestCase {
     
     func test_calculate_withOnePastAndOneUpcomingInstallment_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
-
-        sut.calculate(installments: [
+        let installments = [
             makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo),
             makeInstallment()
-        ])
+        ]
+
+        sut.calculate(installments: installments)
 
         let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
 
@@ -94,12 +97,13 @@ class CalculatorTest: XCTestCase {
     
     func test_calculate_withOnePastAndTwoUpcomingInstallments_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
-
-        sut.calculate(installments: [
+        let installments = [
             makeInstallment(months: 2, monthlyPayment: 1, date: .threeMonthsAgo),
             makeInstallment(),
             makeInstallment()
-        ])
+        ]
+
+        sut.calculate(installments: installments)
 
         let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2)
 
