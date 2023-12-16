@@ -37,6 +37,16 @@ final class InstallmentTests: XCTestCase {
         XCTAssertEqual(sut.remainingMonths, 9)
     }
     
+    func test_remainingAmount_withPastInstallment_calculatedCorrectly() {
+        let sut = makeSUT(
+            months: 12,
+            monthlyPayment: 2,
+            startingDate: .threeMonthsAgo
+        )
+        
+        XCTAssertEqual(sut.remainingAmount, 18)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(

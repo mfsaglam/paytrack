@@ -110,6 +110,20 @@ class CalculatorTest: XCTestCase {
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
     
+    func test_calculate_withOnePastAndOneUpcomingInstallments_shouldCalculateRemainingAmountCorrectly() {
+        let sut = makeSUT(delegate: delegate)
+        let installments = [
+            makeInstallment(months: 4, monthlyPayment: 1, startingDate: .threeMonthsAgo),
+            makeInstallment(),
+        ]
+
+        sut.calculate(installments: installments)
+
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2)
+
+        XCTAssertEqual(delegate.calculationResult, expectedResult)
+    }
+    
     
     
     // MARK: - Helpers

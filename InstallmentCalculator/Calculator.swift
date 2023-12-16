@@ -16,6 +16,10 @@ struct Installment {
         let passedMonths = Date().months(from: startingDate)
         return months - passedMonths
     }
+    
+    var remainingAmount: Double {
+        Double(remainingMonths) * monthlyPayment
+    }
 
     init(monthlyPayment: Double, months: Int, startingDate: Date) {
         self.monthlyPayment = monthlyPayment
@@ -59,17 +63,15 @@ class Calculator {
 
         var result = CalculationResult()
         result.monthlyTotal = filteredInstallments.reduce(0) { $0 + $1.monthlyPayment }
-        result.totalAmount = filteredInstallments.reduce(0) { $0 + ($1.monthlyPayment * Double($1.months)) }
+        result.totalAmount = filteredInstallments.reduce(0) { $0 + ($1.monthlyPayment * Double($1.remainingMonths)) }
         result.totalNumber = filteredInstallments.count
 
         return result
     }
 
     private func filterPastInstallments(_ installments: [Installment]) -> [Installment] {
-        let currentDate = Date()
-
         return installments.filter { installment in
-            return installment.startingDate >= currentDate
+            return installment.remainingMonths > 0
         }
     }
 }
