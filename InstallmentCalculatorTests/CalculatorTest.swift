@@ -71,7 +71,7 @@ class CalculatorTest: XCTestCase {
     func test_calculate_withOnePastInstallment_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
         let installments = [
-            makeInstallment(months: 2, monthlyPayment: 1, paymentDate: .threeMonthsAgo)
+            makeInstallment(months: 2, monthlyPayment: 1, startingDate: .threeMonthsAgo)
         ]
 
         sut.calculate(installments: installments)
@@ -84,7 +84,7 @@ class CalculatorTest: XCTestCase {
     func test_calculate_withOnePastAndOneUpcomingInstallment_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
         let installments = [
-            makeInstallment(months: 2, monthlyPayment: 1, paymentDate: .threeMonthsAgo),
+            makeInstallment(months: 2, monthlyPayment: 1, startingDate: .threeMonthsAgo),
             makeInstallment()
         ]
 
@@ -98,7 +98,7 @@ class CalculatorTest: XCTestCase {
     func test_calculate_withOnePastAndTwoUpcomingInstallments_shouldNotCalculatePastInstallment() {
         let sut = makeSUT(delegate: delegate)
         let installments = [
-            makeInstallment(months: 2, monthlyPayment: 1, paymentDate: .threeMonthsAgo),
+            makeInstallment(months: 2, monthlyPayment: 1, startingDate: .threeMonthsAgo),
             makeInstallment(),
             makeInstallment()
         ]
@@ -121,12 +121,13 @@ class CalculatorTest: XCTestCase {
     private func makeInstallment(
         months: Int = 1,
         monthlyPayment: Double = 1,
-        paymentDate: InstallmentTestDate? = nil
+        startingDate: InstallmentTestDate = .tomorrow
     ) -> Installment {
-        var installment = Installment()
-        installment.months = months
-        installment.monthlyPayment = monthlyPayment
-        installment.paymentDate = paymentDate?.date
+        var installment = Installment(
+            monthlyPayment: monthlyPayment,
+            months: months,
+            startingDate: startingDate.date
+        )
         
         return installment
     }
