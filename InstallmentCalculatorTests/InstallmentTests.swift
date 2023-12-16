@@ -55,13 +55,11 @@ final class InstallmentTests: XCTestCase {
         startingDate: InstallmentTestDate = .tomorrow,
         paymentDay: Int = 1
     ) -> Installment {
-        let installment = Installment(
-            monthlyPayment: monthlyPayment,
+        makeInstallment(
             months: months,
-            startingDate: startingDate.date,
+            monthlyPayment: monthlyPayment,
+            startingDate: startingDate,
             paymentDay: paymentDay
         )
-        
-        return installment
     }
 }
