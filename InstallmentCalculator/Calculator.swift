@@ -28,18 +28,6 @@ struct Installment {
     }
 }
 
-struct CalculationResult {
-    var totalNumber: Int
-    var monthlyTotal: Double
-    var totalAmount: Double
-
-    init(totalNumber: Int = 0, monthlyTotal: Double = 0, totalAmount: Double = 0) {
-        self.totalNumber = totalNumber
-        self.monthlyTotal = monthlyTotal
-        self.totalAmount = totalAmount
-    }
-}
-
 protocol CalculatorDelegate {
     func result(_ result: CalculationResult)
 }
@@ -73,12 +61,5 @@ class Calculator {
         return installments.filter { installment in
             return installment.remainingMonths > 0
         }
-    }
-}
-
-extension Date {
-    /// Returns the amount of months from another date
-    func months(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
     }
 }
