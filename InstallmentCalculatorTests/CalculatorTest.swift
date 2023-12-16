@@ -141,16 +141,6 @@ class CalculatorTest: XCTestCase {
             calculationResult = result
         }
     }
-    
-    private enum InstallmentTestDate: TimeInterval {
-        case tomorrow = 86400 // 24 hours
-        case threeMonthsAgo = -7776000 // -90 days
-        case threeDaysFromNow = 259200 // 3 days
-        
-        var date: Date {
-            return Date(timeIntervalSinceNow: rawValue)
-        }
-    }
 }
 
 extension CalculationResult: Equatable {

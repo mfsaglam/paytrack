@@ -37,6 +37,8 @@ final class InstallmentTests: XCTestCase {
         XCTAssertEqual(sut.remainingMonths, 9)
     }
     
+    // MARK: - Helpers
+    
     private func makeSUT(
         months: Int = 1,
         monthlyPayment: Double = 1,
@@ -49,15 +51,5 @@ final class InstallmentTests: XCTestCase {
         )
         
         return installment
-    }
-    
-    private enum InstallmentTestDate: TimeInterval {
-        case tomorrow = 86400 // 24 hours
-        case threeMonthsAgo = -7862401 // -91 days
-        case threeDaysFromNow = 259200 // 3 days
-        
-        var date: Date {
-            return Date().addingTimeInterval(rawValue)
-        }
     }
 }
