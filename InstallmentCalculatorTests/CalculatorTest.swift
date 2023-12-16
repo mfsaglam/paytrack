@@ -135,12 +135,14 @@ class CalculatorTest: XCTestCase {
     private func makeInstallment(
         months: Int = 1,
         monthlyPayment: Double = 1,
-        startingDate: InstallmentTestDate = .tomorrow
+        startingDate: InstallmentTestDate = .tomorrow,
+        paymentDay: Int = 1
     ) -> Installment {
         let installment = Installment(
             monthlyPayment: monthlyPayment,
             months: months,
-            startingDate: startingDate.date
+            startingDate: startingDate.date,
+            paymentDay: paymentDay
         )
         
         return installment
