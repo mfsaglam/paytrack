@@ -123,7 +123,7 @@ class CalculatorTest: XCTestCase {
         monthlyPayment: Double = 1,
         startingDate: InstallmentTestDate = .tomorrow
     ) -> Installment {
-        var installment = Installment(
+        let installment = Installment(
             monthlyPayment: monthlyPayment,
             months: months,
             startingDate: startingDate.date

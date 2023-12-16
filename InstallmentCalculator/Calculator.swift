@@ -11,6 +11,11 @@ struct Installment {
     var monthlyPayment: Double
     var months: Int
     var startingDate: Date
+    
+    var remainingMonths: Int {
+        let passedMonths = Date().months(from: startingDate)
+        return months - passedMonths
+    }
 
     init(monthlyPayment: Double, months: Int, startingDate: Date) {
         self.monthlyPayment = monthlyPayment
@@ -66,5 +71,12 @@ class Calculator {
         return installments.filter { installment in
             return installment.startingDate >= currentDate
         }
+    }
+}
+
+extension Date {
+    /// Returns the amount of months from another date
+    func months(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
     }
 }
