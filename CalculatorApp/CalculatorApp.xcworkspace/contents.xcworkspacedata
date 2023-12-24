@@ -7,4 +7,7 @@
    <FileRef
       location = "container:CalculatorApp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:../CalculatorApp.xctestplan">
+   </FileRef>
 </Workspace>
