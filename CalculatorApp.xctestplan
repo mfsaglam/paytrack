@@ -19,20 +19,6 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:CalculatorApp.xcodeproj",
-        "identifier" : "12433DD62B2EF4DC00FB9FF2",
-        "name" : "CalculatorAppTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:CalculatorApp.xcodeproj",
-        "identifier" : "12433DE02B2EF4DC00FB9FF2",
-        "name" : "CalculatorAppUITests"
-      }
-    },
-    {
-      "target" : {
         "containerPath" : "container:..\/Calculator\/InstallmentCalculator.xcodeproj",
         "identifier" : "12AF632F2B30080900C26C41",
         "name" : "InstallmentCalculator_iOSTests"
