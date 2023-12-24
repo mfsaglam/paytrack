@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "98FF722A-405D-43E4-823B-CFEC9CAD7574",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CalculatorApp.xcodeproj",
+      "identifier" : "12433DC62B2EF4DB00FB9FF2",
+      "name" : "CalculatorApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..\/Calculator\/InstallmentCalculator.xcodeproj",
+        "identifier" : "12AF632F2B30080900C26C41",
+        "name" : "InstallmentCalculator_iOSTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:CalculatorApp.xcodeproj",
+        "identifier" : "12433DD62B2EF4DC00FB9FF2",
+        "name" : "CalculatorAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
