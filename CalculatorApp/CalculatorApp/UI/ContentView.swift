@@ -12,26 +12,9 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if isEmpty {
-                VStack {
-                    Spacer()
-                        .frame(height: 90)
-                    Image("emptyListIllustration")
-                        .padding(.bottom, 35)
-                    Text("You’ve no installments added for now. \nAdd all, and manage your expenses.")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Image("arrow")
-                            .padding(.bottom, 45)
-                            .padding(.trailing, 89)
-                    }
-                }
+                EmptyListView()
             } else {
                 VStack {
-                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             InfoRectangle(icon: "receipt-item", description: "Total amount", amount: "$1432,45")
@@ -44,13 +27,11 @@ struct ContentView: View {
                     ListTitle()
                     
                     ScrollView {
-                        
                         InstallmentCell()
                         InstallmentCell()
                         InstallmentCell()
                         InstallmentCell()
                         InstallmentCell()
-                        
                     }
                 }
             }
@@ -69,7 +50,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView(isEmpty: true)
+            ContentView()
         }
     }
 }

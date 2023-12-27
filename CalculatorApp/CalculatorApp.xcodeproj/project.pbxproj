@@ -17,6 +17,7 @@
 		126DD1B92B2FE93C0030F6D9 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126DD1B82B2FE93C0030F6D9 /* ToolbarButton.swift */; };
 		127C78212B387B6E004AC86D /* CalculatorAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C78202B387B6E004AC86D /* CalculatorAppTests.swift */; };
 		127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C78232B3882F2004AC86D /* AddInstallmentView.swift */; };
+		12C0A88A2B3BE80A00AE0960 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		126DD1B82B2FE93C0030F6D9 /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
 		127C78202B387B6E004AC86D /* CalculatorAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAppTests.swift; sourceTree = "<group>"; };
 		127C78232B3882F2004AC86D /* AddInstallmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstallmentView.swift; sourceTree = "<group>"; };
+		12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				127C781F2B387970004AC86D /* SubViews */,
 				12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */,
 				127C78232B3882F2004AC86D /* AddInstallmentView.swift */,
+				12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				126DD1B52B2FE9050030F6D9 /* ListTitle.swift in Sources */,
 				126DD1B92B2FE93C0030F6D9 /* ToolbarButton.swift in Sources */,
 				126DD1B72B2FE91C0030F6D9 /* FloatingButton.swift in Sources */,
+				12C0A88A2B3BE80A00AE0960 /* EmptyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
