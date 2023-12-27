@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isEmpty: Bool = false
     var body: some View {
         ZStack {
-            VStack {
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        InfoRectangle(icon: "receipt-item", description: "Total amount", amount: "$1432,45")
-                        InfoRectangle(icon: "money-send", description: "Currently paying", amount: "$340,4")
-                        InfoRectangle(icon: "coin", description: "Remaining months", amount: "35")
+            if isEmpty {
+                EmptyListView()
+            } else {
+                VStack {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            InfoRectangle(icon: "receipt-item", description: "Total amount", amount: "$1432,45")
+                            InfoRectangle(icon: "money-send", description: "Currently paying", amount: "$340,4")
+                            InfoRectangle(icon: "coin", description: "Remaining months", amount: "35")
+                        }
+                        .padding(.horizontal, 16)
                     }
-                    .padding(.horizontal, 16)
-                }
-                
-                ListTitle()
-                
-                ScrollView {
                     
-                    InstallmentCell()
-                    InstallmentCell()
-                    InstallmentCell()
-                    InstallmentCell()
-                    InstallmentCell()
+                    ListTitle()
                     
+                    ScrollView {
+                        InstallmentCell()
+                        InstallmentCell()
+                        InstallmentCell()
+                        InstallmentCell()
+                        InstallmentCell()
+                    }
                 }
             }
 
