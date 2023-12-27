@@ -8,29 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isEmpty: Bool = false
     var body: some View {
         ZStack {
-            VStack {
-                
-                ScrollView(.horizontal, showsIndicators: false) {
+            if isEmpty {
+                VStack {
+                    Spacer()
+                        .frame(height: 90)
+                    Image("emptyListIllustration")
+                        .padding(.bottom, 35)
+                    Text("You’ve no installments added for now. \nAdd all, and manage your expenses.")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                    Spacer()
                     HStack {
-                        InfoRectangle(icon: "receipt-item", description: "Total amount", amount: "$1432,45")
-                        InfoRectangle(icon: "money-send", description: "Currently paying", amount: "$340,4")
-                        InfoRectangle(icon: "coin", description: "Remaining months", amount: "35")
+                        Spacer()
+                        Image("arrow")
+                            .padding(.bottom, 45)
+                            .padding(.trailing, 89)
                     }
-                    .padding(.horizontal, 16)
                 }
-                
-                ListTitle()
-                
-                ScrollView {
+            } else {
+                VStack {
                     
-                    InstallmentCell()
-                    InstallmentCell()
-                    InstallmentCell()
-                    InstallmentCell()
-                    InstallmentCell()
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            InfoRectangle(icon: "receipt-item", description: "Total amount", amount: "$1432,45")
+                            InfoRectangle(icon: "money-send", description: "Currently paying", amount: "$340,4")
+                            InfoRectangle(icon: "coin", description: "Remaining months", amount: "35")
+                        }
+                        .padding(.horizontal, 16)
+                    }
                     
+                    ListTitle()
+                    
+                    ScrollView {
+                        
+                        InstallmentCell()
+                        InstallmentCell()
+                        InstallmentCell()
+                        InstallmentCell()
+                        InstallmentCell()
+                        
+                    }
                 }
             }
 
@@ -48,7 +69,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView()
+            ContentView(isEmpty: true)
         }
     }
 }
