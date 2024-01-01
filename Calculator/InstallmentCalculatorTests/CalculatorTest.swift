@@ -37,7 +37,7 @@ class CalculatorTest: XCTestCase {
             makeInstallment()
         ])
         
-        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
+        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1, totalRemainingMonths: 1)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -49,7 +49,7 @@ class CalculatorTest: XCTestCase {
             makeInstallment()
         ])
         
-        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
+        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1, totalRemainingMonths: 1)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -63,7 +63,7 @@ class CalculatorTest: XCTestCase {
 
         sut.calculate(installments: installments)
         
-        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 3, totalAmount: 5)
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 3, totalAmount: 5, totalRemainingMonths: 2)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -76,7 +76,7 @@ class CalculatorTest: XCTestCase {
 
         sut.calculate(installments: installments)
 
-        let expectedResult = CalculationResult(totalNumber: 0, monthlyTotal: 0, totalAmount: 0)
+        let expectedResult = CalculationResult(totalNumber: 0, monthlyTotal: 0, totalAmount: 0, totalRemainingMonths: 0)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -90,7 +90,7 @@ class CalculatorTest: XCTestCase {
 
         sut.calculate(installments: installments)
 
-        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1)
+        let expectedResult = CalculationResult(totalNumber: 1, monthlyTotal: 1, totalAmount: 1, totalRemainingMonths: 1)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -105,7 +105,7 @@ class CalculatorTest: XCTestCase {
 
         sut.calculate(installments: installments)
 
-        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2)
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2, totalRemainingMonths: 2)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -119,7 +119,7 @@ class CalculatorTest: XCTestCase {
 
         sut.calculate(installments: installments)
 
-        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2)
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2, totalRemainingMonths: 1)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
@@ -147,7 +147,8 @@ extension CalculationResult: Equatable {
     public static func == (lhs: CalculationResult, rhs: CalculationResult) -> Bool {
         return lhs.monthlyTotal == rhs.monthlyTotal &&
         lhs.totalAmount == rhs.totalAmount &&
-        lhs.totalNumber == rhs.totalNumber
+        lhs.totalNumber == rhs.totalNumber &&
+        lhs.totalRemainingMonths == rhs.totalRemainingMonths
     }
 }
 
