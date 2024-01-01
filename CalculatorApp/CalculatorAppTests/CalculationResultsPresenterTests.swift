@@ -25,7 +25,7 @@ class CalculationResultsPresenter: CalculatorDelegate {
     func result(_ result: InstallmentCalculator.CalculationResult) {
         presentableResult.totalAmount = "$\(formatDoubleToString(result.totalAmount))"
         presentableResult.currentlyPaying = "$\(formatDoubleToString(result.monthlyTotal))"
-        presentableResult.remainingMonths = "\(result.totalNumber)"
+        presentableResult.remainingMonths = "\(result.totalRemainingMonths)"
     }
     
     func formatDoubleToString(_ number: Double) -> String {
@@ -61,7 +61,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12, monthlyPayment: 100)
             ]
         )
 
@@ -72,7 +72,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100.20, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12, monthlyPayment: 100.20)
             ]
         )
 
@@ -83,7 +83,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100.202, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12, monthlyPayment: 100.202)
             ]
         )
 
@@ -94,7 +94,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12, monthlyPayment: 100)
             ]
         )
 
@@ -105,7 +105,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100.20, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12, monthlyPayment: 100.20)
             ]
         )
 
@@ -116,7 +116,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100.202, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12, monthlyPayment: 100.202)
             ]
         )
 
@@ -127,7 +127,8 @@ final class CalculationResultsPresenterTests: XCTestCase {
         let (sut, calculator) = makeSUT()
         calculator.calculate(
             installments: [
-                makeInstallment(months: 12, monthlyPayment: 100.202, startingDate: .tomorrow, paymentDay: 5)
+                makeInstallment(months: 12),
+                makeInstallment(months: 3)
             ]
         )
 
