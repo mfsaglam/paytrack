@@ -123,9 +123,7 @@ class CalculatorTest: XCTestCase {
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
-    
-    
-    
+
     // MARK: - Helpers
     
     private func makeSUT(delegate: CalculatorDelegate) -> Calculator {

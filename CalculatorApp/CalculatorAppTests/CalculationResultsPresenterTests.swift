@@ -28,7 +28,7 @@ class CalculationResultsPresenter: CalculatorDelegate {
         presentableResult.remainingMonths = "\(result.totalRemainingMonths)"
     }
     
-    func formatDoubleToString(_ number: Double) -> String {
+    private func formatDoubleToString(_ number: Double) -> String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = number.truncatingRemainder(dividingBy: 1) == 0 ? 0 : 2
         formatter.minimumFractionDigits = formatter.maximumFractionDigits
@@ -142,6 +142,4 @@ final class CalculationResultsPresenterTests: XCTestCase {
     }
 }
 
-extension PresentableResult: Equatable {
-    
-}
+extension PresentableResult: Equatable { }
