@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct CalculationResult {
-    var totalNumber: Int
-    var monthlyTotal: Double
-    var totalAmount: Double
-    var totalRemainingMonths: Int
+public struct CalculationResult {
+    public var totalNumber: Int
+    public var monthlyTotal: Double
+    public var totalAmount: Double
+    public var totalRemainingMonths: Int
 
-    init(
+    public init(
         totalNumber: Int = 0,
         monthlyTotal: Double = 0,
         totalAmount: Double = 0,

@@ -20,6 +20,8 @@
 		12C0A88A2B3BE80A00AE0960 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */; };
 		12C0A88C2B42A32400AE0960 /* CalculationResultsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */; };
 		12C0A88F2B430BBB00AE0960 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A88E2B430BBB00AE0960 /* Helpers.swift */; };
+		12C45E352B43AB610046F283 /* CalculatorResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */; };
+		12C45E372B43ADEF0046F283 /* PresentableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C45E362B43ADEF0046F283 /* PresentableResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultsPresenterTests.swift; sourceTree = "<group>"; };
 		12C0A88E2B430BBB00AE0960 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorResultsPresenter.swift; sourceTree = "<group>"; };
+		12C45E362B43ADEF0046F283 /* PresentableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 				127C78252B388378004AC86D /* Preview Content */,
 				127C781E2B387940004AC86D /* UI */,
 				127C781D2B38792B004AC86D /* Main */,
+				12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */,
+				12C45E362B43ADEF0046F283 /* PresentableResult.swift */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -299,7 +305,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C45E352B43AB610046F283 /* CalculatorResultsPresenter.swift in Sources */,
 				12433DCD2B2EF4DB00FB9FF2 /* ContentView.swift in Sources */,
+				12C45E372B43ADEF0046F283 /* PresentableResult.swift in Sources */,
 				126DD1B12B2FE8AB0030F6D9 /* InfoRectangle.swift in Sources */,
 				127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */,
 				12433DCB2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift in Sources */,

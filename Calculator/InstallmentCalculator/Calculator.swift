@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CalculatorDelegate {
+public protocol CalculatorDelegate {
     func result(_ result: CalculationResult)
 }
 

@@ -6,42 +6,8 @@
 //
 
 import XCTest
+@testable import CalculatorApp
 @testable import InstallmentCalculator
-
-struct PresentableResult {
-    var totalAmount: String
-    var currentlyPaying: String
-    var remainingMonths: String
-}
-
-class CalculationResultsPresenter: CalculatorDelegate {
-    var presentableResult: PresentableResult =
-        .init(
-            totalAmount: "",
-            currentlyPaying: "",
-            remainingMonths: ""
-        )
-    
-    func result(_ result: InstallmentCalculator.CalculationResult) {
-        presentableResult.totalAmount = "$\(formatDoubleToString(result.totalAmount))"
-        presentableResult.currentlyPaying = "$\(formatDoubleToString(result.monthlyTotal))"
-        presentableResult.remainingMonths = "\(result.totalRemainingMonths)"
-    }
-    
-    private func formatDoubleToString(_ number: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = number.truncatingRemainder(dividingBy: 1) == 0 ? 0 : 2
-        formatter.minimumFractionDigits = formatter.maximumFractionDigits
-        formatter.roundingMode = .halfUp
-        formatter.numberStyle = .decimal
-
-        if let formattedString = formatter.string(from: NSNumber(value: number)) {
-            return formattedString
-        } else {
-            return "\(number)"
-        }
-    }
-}
 
 final class CalculationResultsPresenterTests: XCTestCase {
     
@@ -142,4 +108,10 @@ final class CalculationResultsPresenterTests: XCTestCase {
     }
 }
 
-extension PresentableResult: Equatable { }
+extension PresentableResult: Equatable {
+    public static func == (lhs: PresentableResult, rhs: PresentableResult) -> Bool {
+        lhs.currentlyPaying == rhs.currentlyPaying &&
+        lhs.remainingMonths == rhs.remainingMonths &&
+        lhs.totalAmount == rhs.remainingMonths
+    }
+}
