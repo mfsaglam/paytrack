@@ -9,11 +9,16 @@ import Foundation
 @testable import InstallmentCalculator
 
 enum InstallmentTestDate: TimeInterval {
-    case tomorrow = 86400 // 24 hours
-    case threeMonthsAgo = -7862401 // -91 days
+    case tomorrow
+    case threeMonthsAgo
     
     var date: Date {
-        return Date().addingTimeInterval(rawValue)
+        switch self {
+        case .threeMonthsAgo:
+            return Calendar.current.date(byAdding: .month, value: -3, to: Date())!
+        case .tomorrow:
+            return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+        }
     }
 }
 

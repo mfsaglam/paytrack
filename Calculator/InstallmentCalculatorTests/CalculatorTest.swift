@@ -105,7 +105,7 @@ class CalculatorTest: XCTestCase {
 
         sut.calculate(installments: installments)
 
-        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2, totalRemainingMonths: 2)
+        let expectedResult = CalculationResult(totalNumber: 2, monthlyTotal: 2, totalAmount: 2, totalRemainingMonths: 1)
 
         XCTAssertEqual(delegate.calculationResult, expectedResult)
     }
