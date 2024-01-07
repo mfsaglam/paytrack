@@ -37,3 +37,21 @@ func makeInstallment(
     
     return installment
 }
+
+extension CalculationResult: Equatable {
+    public static func == (lhs: CalculationResult, rhs: CalculationResult) -> Bool {
+        return lhs.monthlyTotal == rhs.monthlyTotal &&
+        lhs.totalAmount == rhs.totalAmount &&
+        lhs.totalNumber == rhs.totalNumber &&
+        lhs.totalRemainingMonths == rhs.totalRemainingMonths
+    }
+}
+
+extension Installment: Equatable {
+    public static func == (lhs: Installment, rhs: Installment) -> Bool {
+        return lhs.monthlyPayment == rhs.monthlyPayment &&
+        lhs.months == rhs.months &&
+        lhs.startingDate == rhs.startingDate &&
+        lhs.paymentDay == rhs.paymentDay
+    }
+}

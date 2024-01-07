@@ -23,6 +23,10 @@
 		12BA0E7F2B2D77720032D266 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0E7E2B2D77720032D266 /* Date+Extension.swift */; };
 		12BA0E812B2D77990032D266 /* CalculationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0E802B2D77990032D266 /* CalculationResult.swift */; };
 		12BA0E832B2D77DE0032D266 /* Installment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0E822B2D77DE0032D266 /* Installment.swift */; };
+		12C45E392B495B5A0046F283 /* InstallmentFiltererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C45E382B495B5A0046F283 /* InstallmentFiltererTests.swift */; };
+		12C45E3A2B495B630046F283 /* InstallmentFiltererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C45E382B495B5A0046F283 /* InstallmentFiltererTests.swift */; };
+		12C45E3C2B4AB1620046F283 /* InstallmentFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C45E3B2B4AB1620046F283 /* InstallmentFilterer.swift */; };
+		12C45E3D2B4AB1870046F283 /* InstallmentFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C45E3B2B4AB1620046F283 /* InstallmentFilterer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,8 @@
 		12BA0E7E2B2D77720032D266 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		12BA0E802B2D77990032D266 /* CalculationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResult.swift; sourceTree = "<group>"; };
 		12BA0E822B2D77DE0032D266 /* Installment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Installment.swift; sourceTree = "<group>"; };
+		12C45E382B495B5A0046F283 /* InstallmentFiltererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallmentFiltererTests.swift; sourceTree = "<group>"; };
+		12C45E3B2B4AB1620046F283 /* InstallmentFilterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallmentFilterer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 				12BA0E7E2B2D77720032D266 /* Date+Extension.swift */,
 				12BA0E802B2D77990032D266 /* CalculationResult.swift */,
 				12BA0E822B2D77DE0032D266 /* Installment.swift */,
+				12C45E3B2B4AB1620046F283 /* InstallmentFilterer.swift */,
 			);
 			path = InstallmentCalculator;
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 				12BA0E7B2B2D6C310032D266 /* Helpers */,
 				12074AA42B26AD0400A3ED50 /* CalculatorTest.swift */,
 				1235B16F2B2D599F00F515D6 /* InstallmentTests.swift */,
+				12C45E382B495B5A0046F283 /* InstallmentFiltererTests.swift */,
 			);
 			path = InstallmentCalculatorTests;
 			sourceTree = "<group>";
@@ -315,6 +323,7 @@
 			files = (
 				12BA0E812B2D77990032D266 /* CalculationResult.swift in Sources */,
 				12074AA82B26AFE000A3ED50 /* Calculator.swift in Sources */,
+				12C45E3C2B4AB1620046F283 /* InstallmentFilterer.swift in Sources */,
 				12BA0E7F2B2D77720032D266 /* Date+Extension.swift in Sources */,
 				12BA0E832B2D77DE0032D266 /* Installment.swift in Sources */,
 			);
@@ -324,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C45E392B495B5A0046F283 /* InstallmentFiltererTests.swift in Sources */,
 				12074AA62B26AD7500A3ED50 /* CalculatorTest.swift in Sources */,
 				12BA0E7D2B2D6C530032D266 /* Helpers.swift in Sources */,
 				1235B1702B2D599F00F515D6 /* InstallmentTests.swift in Sources */,
@@ -336,6 +346,7 @@
 			files = (
 				12AF63412B300EE500C26C41 /* CalculationResult.swift in Sources */,
 				12AF63422B300EE500C26C41 /* Calculator.swift in Sources */,
+				12C45E3D2B4AB1870046F283 /* InstallmentFilterer.swift in Sources */,
 				12AF63432B300EE500C26C41 /* Date+Extension.swift in Sources */,
 				12AF63442B300EE500C26C41 /* Installment.swift in Sources */,
 			);
@@ -345,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C45E3A2B495B630046F283 /* InstallmentFiltererTests.swift in Sources */,
 				12AF633E2B300EBE00C26C41 /* CalculatorTest.swift in Sources */,
 				12AF63402B300EC600C26C41 /* Helpers.swift in Sources */,
 				12AF633F2B300EC200C26C41 /* InstallmentTests.swift in Sources */,
