@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct Installment {
-    var monthlyPayment: Double
-    var months: Int
-    var startingDate: Date
-    var paymentDay: Int
+public struct Installment {
+    public var monthlyPayment: Double
+    public var months: Int
+    public var startingDate: Date
+    public var paymentDay: Int
     
-    var remainingMonths: Int {
+    public var remainingMonths: Int {
         let passedMonths = Date().months(from: startingDate)
         return months - passedMonths
     }
     
-    var remainingAmount: Double {
+    public var remainingAmount: Double {
         Double(remainingMonths) * monthlyPayment
     }
 
-    init(monthlyPayment: Double, months: Int, startingDate: Date, paymentDay: Int) {
+    public init(monthlyPayment: Double, months: Int, startingDate: Date, paymentDay: Int) {
         self.monthlyPayment = monthlyPayment
         self.months = months
         self.startingDate = startingDate

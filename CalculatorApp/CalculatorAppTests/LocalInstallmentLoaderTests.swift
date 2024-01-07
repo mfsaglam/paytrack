@@ -6,27 +6,8 @@
 //
 
 import XCTest
+@testable import CalculatorApp
 @testable import InstallmentCalculator
-
-protocol InstallmentLoader {
-    func loadInstallments() -> [Installment]
-}
-
-protocol InstallmentStore {
-    func loadInstallments() -> [Installment]
-}
-
-class LocalInstallmentLoader: InstallmentLoader {
-    private let store: InstallmentStore
-    
-    init(store: InstallmentStore) {
-        self.store = store
-    }
-
-    func loadInstallments() -> [Installment] {
-        store.loadInstallments()
-    }
-}
 
 final class LocalInstallmentLoaderTests: XCTestCase {
     
