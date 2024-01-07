@@ -14,7 +14,7 @@ class LocalInstallmentLoader: InstallmentLoader {
         self.store = store
     }
 
-    func loadInstallments() -> [Installment] {
-        store.loadInstallments()
+    func loadInstallments() async throws -> [Installment] {
+        try await store.load()
     }
 }

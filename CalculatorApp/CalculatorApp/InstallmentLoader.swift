@@ -8,5 +8,5 @@
 import InstallmentCalculator
 
 protocol InstallmentLoader {
-    func loadInstallments() -> [Installment]
+    func loadInstallments() async throws -> [Installment]
 }
