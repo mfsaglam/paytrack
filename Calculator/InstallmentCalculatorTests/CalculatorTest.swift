@@ -141,12 +141,3 @@ class CalculatorTest: XCTestCase {
     }
 }
 
-extension CalculationResult: Equatable {
-    public static func == (lhs: CalculationResult, rhs: CalculationResult) -> Bool {
-        return lhs.monthlyTotal == rhs.monthlyTotal &&
-        lhs.totalAmount == rhs.totalAmount &&
-        lhs.totalNumber == rhs.totalNumber &&
-        lhs.totalRemainingMonths == rhs.totalRemainingMonths
-    }
-}
-

@@ -29,3 +29,4 @@ struct Installment {
         self.paymentDay = paymentDay
     }
 }
+

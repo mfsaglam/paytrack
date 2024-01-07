@@ -12,6 +12,7 @@ public protocol CalculatorDelegate {
 }
 
 class Calculator {
+    let filterer = InstallmentFilterer()
     let delegate: CalculatorDelegate
 
     init(delegate: CalculatorDelegate) {
@@ -26,7 +27,7 @@ class Calculator {
     }
 
     private func calculateResult(for installments: [Installment]) -> CalculationResult {
-        let filteredInstallments = filterPastInstallments(installments)
+        let filteredInstallments = filterer.filterPastInstallments(installments)
 
         var result = CalculationResult()
         result.monthlyTotal = filteredInstallments.reduce(0) { $0 + $1.monthlyPayment }
@@ -35,11 +36,5 @@ class Calculator {
         result.totalRemainingMonths = filteredInstallments.map { $0.remainingMonths }.max() ?? 0
 
         return result
-    }
-
-    private func filterPastInstallments(_ installments: [Installment]) -> [Installment] {
-        return installments.filter { installment in
-            return installment.remainingMonths > 0
-        }
     }
 }

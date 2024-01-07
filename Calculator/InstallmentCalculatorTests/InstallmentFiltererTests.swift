@@ -9,15 +9,9 @@ import Foundation
 import XCTest
 @testable import InstallmentCalculator
 
-class InstallmentFilterer {
-    func filterPastInstallments(_ installments: [Installment]) -> [Installment] {
-        return []
-    }
-}
-
 final class InstallmentFiltererTests: XCTestCase {
     
-    func test_() {
+    func test_filterPastInstallments_emptyInstallments_returnsEmpty() {
         let sut = InstallmentFilterer()
         let expectedResult: [Installment] = []
         
@@ -27,16 +21,58 @@ final class InstallmentFiltererTests: XCTestCase {
         
         XCTAssertEqual(filteredResult, expectedResult)
     }
-}
-
-extension Installment: Identifiable {
-    public var id: UUID {
-        UUID()
+    
+    func test_filterPastInstallments_oneUpcomingInstallment_doesNotFilter() {
+        let sut = InstallmentFilterer()
+        let upcomingInstallment = makeInstallment()
+        let expectedResult: [Installment] = [upcomingInstallment]
+        
+        let filteredResult = sut.filterPastInstallments(
+            [upcomingInstallment]
+        )
+        
+        XCTAssertEqual(filteredResult, expectedResult)
     }
-}
-
-extension Installment: Equatable {
-    public static func == (lhs: Installment, rhs: Installment) -> Bool {
-        rhs.id == lhs.id
+    
+    func test_filterPastInstallments_onePassedInstallment_filtersPassed() {
+        let sut = InstallmentFilterer()
+        let expectedResult: [Installment] = []
+        
+        let filteredResult = sut.filterPastInstallments(
+            [
+                makeInstallment(startingDate: .threeMonthsAgo)
+            ]
+        )
+        
+        XCTAssertEqual(filteredResult, expectedResult)
     }
+    
+    func test_filterPastInstallments_onePassedOneUpcomingInstallment_filtersPassed() {
+        let sut = InstallmentFilterer()
+        let upcomingInstallment = makeInstallment()
+        let expectedResult: [Installment] = [upcomingInstallment]
+        
+        let filteredResult = sut.filterPastInstallments(
+            [
+                makeInstallment(startingDate: .threeMonthsAgo),
+                upcomingInstallment
+            ]
+        )
+        
+        XCTAssertEqual(filteredResult, expectedResult)
+    }
+    
+    func test_filterPastInstallments_twoPassedInstallments_returnsEmpty() {
+        let sut = InstallmentFilterer()
+        let passedInstallments = [
+            makeInstallment(startingDate: .threeMonthsAgo),
+            makeInstallment(startingDate: .threeMonthsAgo)
+        ]
+        let expectedResult: [Installment] = []
+        
+        let filteredResult = sut.filterPastInstallments(passedInstallments)
+        
+        XCTAssertEqual(filteredResult, expectedResult)
+    }
+
 }
