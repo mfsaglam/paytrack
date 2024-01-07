@@ -30,7 +30,14 @@ class LocalInstallmentLoader: InstallmentLoader {
 
 final class LocalInstallmentLoaderTests: XCTestCase {
     
-    func test_() {
+    func test_loadInstallments_notCalledOnInit() {
+        let store = InstallmentStoreSpy()
+        let sut = LocalInstallmentLoader(store: store)
+                
+        XCTAssertFalse(store.loadInstallmentsCalled)
+    }
+    
+    func test_loadInstallments_messagesStore() {
         let store = InstallmentStoreSpy()
         let sut = LocalInstallmentLoader(store: store)
         
