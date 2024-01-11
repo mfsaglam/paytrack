@@ -9,10 +9,11 @@ import Foundation
 import InstallmentCalculator
 
 class CalculationResultsPresenter {
-    let calculator = Calculator()
+    let calculator: Calculator
     let installments: [Installment]
     
-    init(installments: [Installment]) {
+    init(calculator: Calculator, installments: [Installment]) {
+        self.calculator = calculator
         self.installments = installments
     }
 

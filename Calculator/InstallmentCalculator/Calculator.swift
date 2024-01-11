@@ -12,7 +12,7 @@ public class Calculator {
     
     public init() {}
 
-    func calculate(installments: [Installment]) -> CalculationResult {
+    public func calculate(installments: [Installment]) -> CalculationResult {
         let filteredInstallments = filterer.filterPastInstallments(installments)
         
         var result = CalculationResult()

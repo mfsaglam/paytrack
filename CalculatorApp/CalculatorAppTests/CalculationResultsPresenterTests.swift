@@ -80,7 +80,8 @@ final class CalculationResultsPresenterTests: XCTestCase {
     }
     
     private func makeSUT(installments: [Installment]) -> CalculationResultsPresenter {
-        return CalculationResultsPresenter(installments: installments)
+        let calculator = Calculator()
+        return CalculationResultsPresenter(calculator: calculator, installments: installments)
     }
 }
 
