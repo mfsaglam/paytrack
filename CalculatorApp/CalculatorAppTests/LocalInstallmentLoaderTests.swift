@@ -23,6 +23,7 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         let sut = LocalInstallmentLoader(store: store)
         
         let _ = try await sut.loadInstallments()
+        
         XCTAssertTrue(store.loadInstallmentsCalled)
     }
     
@@ -33,6 +34,7 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         store.storedInstallments = storedInstallments
         
         let retrievedInstallments = try await sut.loadInstallments()
+        
         XCTAssertEqual(store.storedInstallments, retrievedInstallments)
     }
     
@@ -48,13 +50,25 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         let sut = LocalInstallmentLoader(store: store)
         
         try await sut.save(makeInstallment())
+        
         XCTAssertTrue(store.saveCalled)
+    }
+    
+    func test_save_savesInstallment() async throws {
+        let store = InstallmentStoreSpy()
+        let sut = LocalInstallmentLoader(store: store)
+        let installment = makeInstallment()
+        
+        try await sut.save(installment)
+        
+        XCTAssertEqual(store.recentlySavedInstallments.first, installment)
     }
     
     private class InstallmentStoreSpy: InstallmentStore {
         var loadInstallmentsCalled = false
         var saveCalled = false
         var storedInstallments = [Installment]()
+        var recentlySavedInstallments = [Installment]()
         func load() async throws -> [Installment] {
             loadInstallmentsCalled = true
             return storedInstallments
@@ -62,6 +76,7 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         
         func save(_ installment: Installment) async throws {
             saveCalled = true
+            recentlySavedInstallments.append(installment)
         }
     }
 }
