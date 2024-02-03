@@ -8,20 +8,24 @@
 import Foundation
 import InstallmentCalculator
 
-class CalculationResultsPresenter: CalculatorDelegate {
-    var presentableResult: PresentableResult =
-        .init(
-            totalAmount: "",
-            currentlyPaying: "",
-            remainingMonths: ""
-        )
+class CalculationResultsPresenter {
+    let calculator: Calculator
+    let installments: [Installment]
     
-    func result(_ result: CalculationResult) {
-        presentableResult.totalAmount = "$\(formatDoubleToString(result.totalAmount))"
-        presentableResult.currentlyPaying = "$\(formatDoubleToString(result.monthlyTotal))"
-        presentableResult.remainingMonths = "\(result.totalRemainingMonths)"
+    init(calculator: Calculator, installments: [Installment]) {
+        self.calculator = calculator
+        self.installments = installments
     }
-    
+
+    var presentableResult: PresentableResult {
+        let result = calculator.calculate(installments: installments)
+        return PresentableResult(
+            totalAmount: "$\(formatDoubleToString(result.totalAmount))",
+            currentlyPaying: "$\(formatDoubleToString(result.monthlyTotal))",
+            remainingMonths: "\(result.totalRemainingMonths)"
+        )
+    }
+
     private func formatDoubleToString(_ number: Double) -> String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = number.truncatingRemainder(dividingBy: 1) == 0 ? 0 : 2

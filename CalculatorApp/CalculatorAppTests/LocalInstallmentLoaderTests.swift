@@ -6,8 +6,8 @@
 //
 
 import XCTest
+import InstallmentCalculator
 @testable import CalculatorApp
-@testable import InstallmentCalculator
 
 final class LocalInstallmentLoaderTests: XCTestCase {
     
