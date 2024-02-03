@@ -12,15 +12,13 @@ import InstallmentCalculator
 final class LocalInstallmentLoaderTests: XCTestCase {
     
     func test_loadInstallments_notCalledOnInit() {
-        let store = InstallmentStoreSpy()
-        let _ = LocalInstallmentLoader(store: store)
+        let (_, store) = makeSUT()
                 
         XCTAssertFalse(store.loadInstallmentsCalled)
     }
     
     func test_loadInstallments_messagesStore() async throws {
-        let store = InstallmentStoreSpy()
-        let sut = LocalInstallmentLoader(store: store)
+        let (sut, store) = makeSUT()
         
         let _ = try await sut.loadInstallments()
         
@@ -28,8 +26,7 @@ final class LocalInstallmentLoaderTests: XCTestCase {
     }
     
     func test_loadInstallments_returnsCachedInstallments() async throws {
-        let store = InstallmentStoreSpy()
-        let sut = LocalInstallmentLoader(store: store)
+        let (sut, store) = makeSUT()
         let storedInstallments = [makeInstallment()]
         store.storedInstallments = storedInstallments
         
@@ -39,15 +36,13 @@ final class LocalInstallmentLoaderTests: XCTestCase {
     }
     
     func test_save_notCalledOnInit() {
-        let store = InstallmentStoreSpy()
-        let _ = LocalInstallmentLoader(store: store)
+        let (_, store) = makeSUT()
                 
         XCTAssertFalse(store.saveCalled)
     }
     
     func test_save_messagesStore() async throws {
-        let store = InstallmentStoreSpy()
-        let sut = LocalInstallmentLoader(store: store)
+        let (sut, store) = makeSUT()
         
         try await sut.save(makeInstallment())
         
@@ -55,8 +50,7 @@ final class LocalInstallmentLoaderTests: XCTestCase {
     }
     
     func test_save_savesInstallment() async throws {
-        let store = InstallmentStoreSpy()
-        let sut = LocalInstallmentLoader(store: store)
+        let (sut, store) = makeSUT()
         let installment = makeInstallment()
         
         try await sut.save(installment)
@@ -65,8 +59,7 @@ final class LocalInstallmentLoaderTests: XCTestCase {
     }
     
     func test_delete_messagesStore() async throws {
-        let store = InstallmentStoreSpy()
-        let sut = LocalInstallmentLoader(store: store)
+        let (sut, store) = makeSUT()
         
         try await sut.delete(makeInstallment())
         
@@ -74,13 +67,20 @@ final class LocalInstallmentLoaderTests: XCTestCase {
     }
     
     func test_delete_deletesInstallment() async throws {
-        let store = InstallmentStoreSpy()
-        let sut = LocalInstallmentLoader(store: store)
+        let (sut, store) = makeSUT()
         let installment = makeInstallment()
         
         try await sut.delete(installment)
         
         XCTAssertEqual(store.recentlyDeletedInstallments.first, installment)
+    }
+    
+    // MARK: Helpers
+    
+    private func makeSUT() -> (LocalInstallmentLoader, InstallmentStoreSpy) {
+        let store = InstallmentStoreSpy()
+        let sut = LocalInstallmentLoader(store: store)
+        return (sut, store)
     }
     
     private class InstallmentStoreSpy: InstallmentStore {
