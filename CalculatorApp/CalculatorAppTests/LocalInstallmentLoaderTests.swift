@@ -18,35 +18,50 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         XCTAssertFalse(store.loadInstallmentsCalled)
     }
     
-    func test_loadInstallments_messagesStore() {
+    func test_loadInstallments_messagesStore() async throws {
         let store = InstallmentStoreSpy()
         let sut = LocalInstallmentLoader(store: store)
         
-        Task {
-            let _ = try await sut.loadInstallments()
-            XCTAssertTrue(store.loadInstallmentsCalled)
-        }
-        
+        let _ = try await sut.loadInstallments()
+        XCTAssertTrue(store.loadInstallmentsCalled)
     }
     
-    func test_loadInstallments_returnsCachedInstallments() {
+    func test_loadInstallments_returnsCachedInstallments() async throws {
         let store = InstallmentStoreSpy()
         let sut = LocalInstallmentLoader(store: store)
         let storedInstallments = [makeInstallment()]
         store.storedInstallments = storedInstallments
         
-        Task {
-            let retrievedInstallments = try await sut.loadInstallments()
-            XCTAssertEqual(store.storedInstallments, retrievedInstallments)
-        }
+        let retrievedInstallments = try await sut.loadInstallments()
+        XCTAssertEqual(store.storedInstallments, retrievedInstallments)
+    }
+    
+    func test_save_notCalledOnInit() {
+        let store = InstallmentStoreSpy()
+        let _ = LocalInstallmentLoader(store: store)
+                
+        XCTAssertFalse(store.saveCalled)
+    }
+    
+    func test_save_messagesStore() async throws {
+        let store = InstallmentStoreSpy()
+        let sut = LocalInstallmentLoader(store: store)
+        
+        try await sut.save(makeInstallment())
+        XCTAssertTrue(store.saveCalled)
     }
     
     private class InstallmentStoreSpy: InstallmentStore {
         var loadInstallmentsCalled = false
+        var saveCalled = false
         var storedInstallments = [Installment]()
         func load() async throws -> [Installment] {
             loadInstallmentsCalled = true
             return storedInstallments
+        }
+        
+        func save(_ installment: Installment) async throws {
+            saveCalled = true
         }
     }
 }
