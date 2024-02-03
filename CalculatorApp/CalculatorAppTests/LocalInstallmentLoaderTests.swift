@@ -64,11 +64,33 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         XCTAssertEqual(store.recentlySavedInstallments.first, installment)
     }
     
+    func test_delete_messagesStore() async throws {
+        let store = InstallmentStoreSpy()
+        let sut = LocalInstallmentLoader(store: store)
+        
+        try await sut.delete(makeInstallment())
+        
+        XCTAssertTrue(store.deleteCalled)
+    }
+    
+    func test_delete_deletesInstallment() async throws {
+        let store = InstallmentStoreSpy()
+        let sut = LocalInstallmentLoader(store: store)
+        let installment = makeInstallment()
+        
+        try await sut.delete(installment)
+        
+        XCTAssertEqual(store.recentlyDeletedInstallments.first, installment)
+    }
+    
     private class InstallmentStoreSpy: InstallmentStore {
         var loadInstallmentsCalled = false
         var saveCalled = false
+        var deleteCalled = false
         var storedInstallments = [Installment]()
         var recentlySavedInstallments = [Installment]()
+        var recentlyDeletedInstallments = [Installment]()
+
         func load() async throws -> [Installment] {
             loadInstallmentsCalled = true
             return storedInstallments
@@ -77,6 +99,11 @@ final class LocalInstallmentLoaderTests: XCTestCase {
         func save(_ installment: Installment) async throws {
             saveCalled = true
             recentlySavedInstallments.append(installment)
+        }
+        
+        func delete(_ installment: Installment) async throws {
+            deleteCalled = true
+            recentlyDeletedInstallments.append(installment)
         }
     }
 }

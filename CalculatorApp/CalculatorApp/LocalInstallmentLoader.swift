@@ -21,4 +21,8 @@ class LocalInstallmentLoader: InstallmentLoader {
     func save(_ installment: Installment) async throws {
         try await store.save(installment)
     }
+    
+    func delete(_ installment: Installment) async throws {
+        try await store.delete(installment)
+    }
 }
