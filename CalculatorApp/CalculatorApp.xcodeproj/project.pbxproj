@@ -15,6 +15,9 @@
 		126DD1B52B2FE9050030F6D9 /* ListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126DD1B42B2FE9050030F6D9 /* ListTitle.swift */; };
 		126DD1B72B2FE91C0030F6D9 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126DD1B62B2FE91C0030F6D9 /* FloatingButton.swift */; };
 		126DD1B92B2FE93C0030F6D9 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126DD1B82B2FE93C0030F6D9 /* ToolbarButton.swift */; };
+		127334D22B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */; };
+		127334D42B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */; };
+		127334D92B701594005AA3DE /* Installment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 127334D72B701593005AA3DE /* Installment.xcdatamodeld */; };
 		127C78212B387B6E004AC86D /* CalculatorAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C78202B387B6E004AC86D /* CalculatorAppTests.swift */; };
 		127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C78232B3882F2004AC86D /* AddInstallmentView.swift */; };
 		12C0A88A2B3BE80A00AE0960 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */; };
@@ -57,6 +60,9 @@
 		126DD1B42B2FE9050030F6D9 /* ListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTitle.swift; sourceTree = "<group>"; };
 		126DD1B62B2FE91C0030F6D9 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		126DD1B82B2FE93C0030F6D9 /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
+		127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataInstallmentStoreTests.swift; sourceTree = "<group>"; };
+		127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataInstallmentStore.swift; sourceTree = "<group>"; };
+		127334D82B701594005AA3DE /* Installment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Installment.xcdatamodel; sourceTree = "<group>"; };
 		127C78202B387B6E004AC86D /* CalculatorAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAppTests.swift; sourceTree = "<group>"; };
 		127C78232B3882F2004AC86D /* AddInstallmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstallmentView.swift; sourceTree = "<group>"; };
 		12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
@@ -125,6 +131,8 @@
 				12C45E402B4ADF090046F283 /* InstallmentLoader.swift */,
 				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
 				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
+				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
+				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 				127C78202B387B6E004AC86D /* CalculatorAppTests.swift */,
 				12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */,
 				12C45E3E2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift */,
+				127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */,
 			);
 			path = CalculatorAppTests;
 			sourceTree = "<group>";
@@ -322,11 +331,13 @@
 				12C45E432B4ADF510046F283 /* InstallmentStore.swift in Sources */,
 				12C45E372B43ADEF0046F283 /* PresentableResult.swift in Sources */,
 				126DD1B12B2FE8AB0030F6D9 /* InfoRectangle.swift in Sources */,
+				127334D42B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift in Sources */,
 				127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */,
 				12433DCB2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift in Sources */,
 				126DD1B32B2FE8E70030F6D9 /* InstallmentCell.swift in Sources */,
 				12C45E472B4ADFBD0046F283 /* LocalInstallmentLoader.swift in Sources */,
 				126DD1B52B2FE9050030F6D9 /* ListTitle.swift in Sources */,
+				127334D92B701594005AA3DE /* Installment.xcdatamodeld in Sources */,
 				12C45E412B4ADF090046F283 /* InstallmentLoader.swift in Sources */,
 				126DD1B92B2FE93C0030F6D9 /* ToolbarButton.swift in Sources */,
 				126DD1B72B2FE91C0030F6D9 /* FloatingButton.swift in Sources */,
@@ -338,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127334D22B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift in Sources */,
 				12C45E3F2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift in Sources */,
 				12C0A88C2B42A32400AE0960 /* CalculationResultsPresenterTests.swift in Sources */,
 				12C0A88F2B430BBB00AE0960 /* Helpers.swift in Sources */,
@@ -659,6 +671,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		127334D72B701593005AA3DE /* Installment.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				127334D82B701594005AA3DE /* Installment.xcdatamodel */,
+			);
+			currentVersion = 127334D82B701594005AA3DE /* Installment.xcdatamodel */;
+			path = Installment.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 12433DBF2B2EF4DB00FB9FF2 /* Project object */;
 }
