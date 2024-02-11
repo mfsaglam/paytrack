@@ -38,6 +38,7 @@ class CoreDataInstallmentStore: InstallmentStore {
     func save(_ installment: Installment) async throws {
         try await perform { context in
             let entity = InstallmentEntity(context: context)
+            entity.id = installment.id
             entity.monthlyPayment = installment.monthlyPayment
             entity.months = Int64(installment.months)
             entity.startingDate = installment.startingDate
@@ -92,6 +93,7 @@ class CoreDataInstallmentStore: InstallmentStore {
 extension InstallmentEntity {
     var asModel: Installment {
         .init(
+            id: self.id!,
             monthlyPayment: self.monthlyPayment,
             months: Int(self.months),
             startingDate: self.startingDate!,
