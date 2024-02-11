@@ -9,4 +9,6 @@ import InstallmentCalculator
 
 protocol InstallmentStore {
     func load() async throws -> [Installment]
+    func save(_ installment: Installment) async throws
+    func delete(_ installment: Installment) async throws
 }

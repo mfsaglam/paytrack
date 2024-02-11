@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct Installment {
+public struct Installment: Identifiable {
+    public var id: UUID
     public var monthlyPayment: Double
     public var months: Int
     public var startingDate: Date
@@ -22,7 +23,8 @@ public struct Installment {
         Double(remainingMonths) * monthlyPayment
     }
 
-    public init(monthlyPayment: Double, months: Int, startingDate: Date, paymentDay: Int) {
+    public init(id: UUID, monthlyPayment: Double, months: Int, startingDate: Date, paymentDay: Int) {
+        self.id = id
         self.monthlyPayment = monthlyPayment
         self.months = months
         self.startingDate = startingDate

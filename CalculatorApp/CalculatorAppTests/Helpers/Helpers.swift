@@ -25,6 +25,7 @@ func makeInstallment(
     paymentDay: Int = 1
 ) -> Installment {
     let installment = Installment(
+        id: UUID(),
         monthlyPayment: monthlyPayment,
         months: months,
         startingDate: startingDate.date,
