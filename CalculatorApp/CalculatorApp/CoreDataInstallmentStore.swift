@@ -56,7 +56,7 @@ class CoreDataInstallmentStore: InstallmentStore {
     func delete(_ installment: Installment) async throws {
         try await perform { context in
             let fetchRequest: NSFetchRequest<InstallmentEntity> = InstallmentEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "startingDate == %@", installment.startingDate as CVarArg)
+            fetchRequest.predicate = NSPredicate(format: "identifier == %@", installment.id.uuidString)
             
             do {
                 let result = try context.fetch(fetchRequest)
