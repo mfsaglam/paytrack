@@ -94,6 +94,7 @@ extension InstallmentEntity {
     var asModel: Installment {
         .init(
             id: self.id!,
+            name: self.name!,
             monthlyPayment: self.monthlyPayment,
             months: Int(self.months),
             startingDate: self.startingDate!,

@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct CalculatorAppApp: App {
+    let result = PresentableResult(totalAmount: "", currentlyPaying: "", remainingMonths: "")
+    let installments: [PresentableInstallment] = []
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                result: result,
+                installments: installments
+            )
         }
     }
 }
