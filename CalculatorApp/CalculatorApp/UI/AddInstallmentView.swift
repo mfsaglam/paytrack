@@ -77,7 +77,7 @@ struct ICMainButton: View {
             
         } label: {
             Rectangle()
-                .frame(width: .infinity, height: 50)
+                .frame(height: 50)
                 .foregroundColor(context == .positive ? .green : .red.opacity(0.1))
                 .cornerRadius(16)
                 .overlay {
