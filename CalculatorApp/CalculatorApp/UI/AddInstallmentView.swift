@@ -9,13 +9,16 @@ import SwiftUI
 
 struct AddInstallmentView: View {
     var name: String
+    var totalPrice: String
+    var monthlyPayment: String
+    var paymentDate: String
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
-                ICTextField(title: "Name", text: name)
-                ICTextField(title: "Total price", text: name)
-                ICTextField(title: "Installment amount", text: name)
-                ICTextField(title: "Payment date", text: name)
+                ICTextField(title: "Name", keyboardType: .default, text: name)
+                ICTextField(title: "Total price", keyboardType: .decimalPad, text: totalPrice)
+                ICTextField(title: "Monthly payment", keyboardType: .decimalPad, text: monthlyPayment)
+                ICTextField(title: "Payment date", keyboardType: .numberPad, text: paymentDate)
                 Spacer()
                     .frame(height: 50)
             }
@@ -35,13 +38,14 @@ struct AddInstallmentView: View {
 struct AddInstallmentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddInstallmentView(name: "")
+            AddInstallmentView(name: "", totalPrice: "", monthlyPayment: "", paymentDate: "")
         }
     }
 }
 
 struct ICTextField: View {
     var title: String
+    var keyboardType: UIKeyboardType = .default
     @State var text: String
 
     var body: some View {
@@ -58,6 +62,7 @@ struct ICTextField: View {
                 .overlay {
                     TextField("", text: $text)
                         .padding(.leading)
+                        .keyboardType(keyboardType)
                 }
                 .frame(height: 50)
         }
