@@ -8,16 +8,6 @@
 import InstallmentCalculator
 import SwiftUI
 
-struct PresentableInstallment: Identifiable {
-    var id: UUID
-    var name: String
-    var paymentDay: Int
-    var paidMonths: Int
-    var totalMonths: Int
-    var remainingAmount: Double
-    var monthlyPayment: Double
-}
-
 struct InstallmentCell: View {
     @State var installment: PresentableInstallment
     var body: some View {

@@ -7,21 +7,57 @@
 
 import SwiftUI
 
+final class ContentViewViewModel: ObservableObject {
+    let presenter: CalculationResultsPresenter?
+    
+    @Published var result: PresentableResult?
+    @Published var installments: [PresentableInstallment]
+    var isEmpty: Bool {
+        installments.isEmpty
+    }
+    
+    
+    init(presenter: CalculationResultsPresenter) {
+        self.presenter = presenter
+        
+        self.result = presenter.presentableResult
+        self.installments = presenter.presentableInstallments
+    }
+    
+    private init(result: PresentableResult, installments: [PresentableInstallment]) {
+        self.presenter = nil
+        self.result = result
+        self.installments = installments
+    }
+}
+
+extension ContentViewViewModel {
+    static func forPreview() -> ContentViewViewModel {
+        .init(
+            result: .init(totalAmount: "123", currentlyPaying: "12", remainingMonths: "12"),
+            installments: [
+                .init(id: .init(), name: "iPhone", paymentDay: 2, paidMonths: 2, totalMonths: 12, remainingAmount: 500, monthlyPayment: 59.90)
+            ]
+        )
+    }
+}
+
 struct ContentView: View {
-    @State var result: PresentableResult
-    @State var installments: [PresentableInstallment]
-    @State var isEmpty: Bool = false
+    @StateObject var viewModel: ContentViewViewModel
+    
     var body: some View {
         ZStack {
-            if isEmpty {
+            if viewModel.isEmpty {
                 EmptyListView()
             } else {
                 VStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount)
-                            InfoRectangle(icon: "money-send", description: "Currently paying", amount: result.currentlyPaying)
-                            InfoRectangle(icon: "coin", description: "Remaining months", amount: result.remainingMonths)
+                            if let result = viewModel.result {
+                                InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount)
+                                InfoRectangle(icon: "money-send", description: "Currently paying", amount: result.currentlyPaying)
+                                InfoRectangle(icon: "coin", description: "Remaining months", amount: result.remainingMonths)
+                            }
                         }
                         .padding(.horizontal, 16)
                     }
@@ -29,7 +65,7 @@ struct ContentView: View {
                     ListTitle()
                     
                     ScrollView {
-                        ForEach(installments) { installment in
+                        ForEach(viewModel.installments) { installment in
                             InstallmentCell(installment: installment)
                         }
                     }
@@ -50,10 +86,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView(
-                result: .init(totalAmount: "$1432,45", currentlyPaying: "$340,4", remainingMonths: "35"),
-                installments: []
-            )
+            ContentView(viewModel: .forPreview())
         }
     }
 }
