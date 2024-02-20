@@ -27,7 +27,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
             makeInstallment(months: 12, monthlyPayment: 100)
         ])
 
-        XCTAssertEqual(sut.presentableResult.totalAmount, "$1,200")
+        XCTAssertEqual(sut.presentableResult.totalAmount, "$1.200")
     }
     
     func test_presentableResult_totalAmount_formatsDecimalCorrectly() {
@@ -35,7 +35,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
             makeInstallment(months: 12, monthlyPayment: 100.20)
         ])
 
-        XCTAssertEqual(sut.presentableResult.totalAmount, "$1,202.40")
+        XCTAssertEqual(sut.presentableResult.totalAmount, "$1.202,40")
     }
     
     func test_presentableResult_totalAmount_formatsMoreThanTwoDecimalsCorrectly() {
@@ -43,7 +43,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
             makeInstallment(months: 12, monthlyPayment: 100.202)
         ])
 
-        XCTAssertEqual(sut.presentableResult.totalAmount, "$1,202.42")
+        XCTAssertEqual(sut.presentableResult.totalAmount, "$1.202,42")
     }
     
     func test_presentableResult_currentlyPaying_formatsNonDecimalCorrectly() {
@@ -59,7 +59,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
             makeInstallment(months: 12, monthlyPayment: 100.20)
         ])
 
-        XCTAssertEqual(sut.presentableResult.currentlyPaying, "$100.20")
+        XCTAssertEqual(sut.presentableResult.currentlyPaying, "$100,20")
     }
     
     func test_presentableResult_currentlyPaying_formatsMoreThanTwoDecimalsCorrectly() {
@@ -67,7 +67,7 @@ final class CalculationResultsPresenterTests: XCTestCase {
             makeInstallment(months: 12, monthlyPayment: 100.202)
         ])
 
-        XCTAssertEqual(sut.presentableResult.currentlyPaying, "$100.20")
+        XCTAssertEqual(sut.presentableResult.currentlyPaying, "$100,20")
     }
     
     func test_presentableResult_remainingMonths_formatsCorrectly() {

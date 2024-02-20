@@ -5,9 +5,11 @@
 //  Created by Fatih Sağlam on 18.12.2023.
 //
 
+import InstallmentCalculator
 import SwiftUI
 
 struct InstallmentCell: View {
+    @State var installment: PresentableInstallment
     var body: some View {
         RoundedRectangle(cornerRadius: 16)
             .frame(height: 60)
@@ -16,14 +18,14 @@ struct InstallmentCell: View {
             .overlay {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Hair dryer")
+                        Text(installment.name)
                             .font(.system(size: 20))
                             .fontWeight(.medium)
                         HStack {
-                            Text("Every 15th of the month")
+                            Text("Every \(installment.paymentDay)th of the month")
                                 .foregroundColor(.gray)
                                 .fontWeight(.light)
-                            Text("4/12")
+                            Text("\(installment.paidMonths)/\(installment.totalMonths)")
                                 .foregroundColor(.red)
                                 .padding(.vertical, 2)
                                 .padding(.horizontal, 4)
@@ -37,12 +39,12 @@ struct InstallmentCell: View {
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("$817")
+                        Text("$\(installment.remainingAmount)")
                             .font(.system(size: 20))
                             .fontWeight(.regular)
                             .minimumScaleFactor(0.5)
                             .lineLimit(1)
-                        Text("$99,45")
+                        Text("$\(installment.monthlyPayment)")
                             .foregroundColor(.red)
                             .font(.system(size: 10))
                             .minimumScaleFactor(0.5)
@@ -57,6 +59,6 @@ struct InstallmentCell: View {
 
 struct InstallmentCell_Previews: PreviewProvider {
     static var previews: some View {
-        InstallmentCell()
+        InstallmentCell(installment: .init(id: UUID(), name: "iPhone", paymentDay: 5, paidMonths: 1, totalMonths: 12, remainingAmount: 1450, monthlyPayment: 50))
     }
 }

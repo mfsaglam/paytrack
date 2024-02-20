@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isEmpty: Bool = false
+    @StateObject var viewModel: ContentViewViewModel
+    
     var body: some View {
         ZStack {
-            if isEmpty {
+            if viewModel.isEmpty {
                 EmptyListView()
             } else {
                 VStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            InfoRectangle(icon: "receipt-item", description: "Total amount", amount: "$1432,45")
-                            InfoRectangle(icon: "money-send", description: "Currently paying", amount: "$340,4")
-                            InfoRectangle(icon: "coin", description: "Remaining months", amount: "35")
+                            if let result = viewModel.result {
+                                InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount)
+                                InfoRectangle(icon: "money-send", description: "Currently paying", amount: result.currentlyPaying)
+                                InfoRectangle(icon: "coin", description: "Remaining months", amount: result.remainingMonths)
+                            }
                         }
                         .padding(.horizontal, 16)
                     }
@@ -27,11 +30,9 @@ struct ContentView: View {
                     ListTitle()
                     
                     ScrollView {
-                        InstallmentCell()
-                        InstallmentCell()
-                        InstallmentCell()
-                        InstallmentCell()
-                        InstallmentCell()
+                        ForEach(viewModel.installments) { installment in
+                            InstallmentCell(installment: installment)
+                        }
                     }
                 }
             }
@@ -50,7 +51,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView()
+            ContentView(viewModel: .forPreview())
         }
     }
 }

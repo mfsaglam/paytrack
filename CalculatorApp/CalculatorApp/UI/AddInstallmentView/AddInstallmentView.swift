@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct AddInstallmentView: View {
-    var name: String
+    
+    @StateObject var viewModel = AddInstallmentViewViewModel()
+    
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
-                ICTextField(title: "Name", text: name)
-                ICTextField(title: "Total price", text: name)
-                ICTextField(title: "Installment amount", text: name)
-                ICTextField(title: "Payment date", text: name)
+                ICTextField(title: "Name", keyboardType: .default, text: $viewModel.name)
+                ICTextField(title: "Total price", keyboardType: .decimalPad, text: $viewModel.totalPrice)
+                ICTextField(title: "Monthly payment", keyboardType: .decimalPad, text: $viewModel.monthlyPayment)
+                ICTextField(title: "Payment date", keyboardType: .numberPad, text: $viewModel.paymentDate)
                 Spacer()
                     .frame(height: 50)
             }
@@ -24,8 +26,12 @@ struct AddInstallmentView: View {
             
             VStack {
                 Spacer()
-                ICMainButton(buttonText: "Add", context: .positive)
-                ICMainButton(buttonText: "Cancel", context: .negative)
+                ICMainButton(buttonText: "Add", context: .positive) {
+                    viewModel.saveChanges()
+                }
+                ICMainButton(buttonText: "Cancel", context: .negative) {
+                    print("cancelled")
+                }
             }
             .padding(.horizontal)
         }
@@ -35,14 +41,15 @@ struct AddInstallmentView: View {
 struct AddInstallmentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddInstallmentView(name: "")
+            AddInstallmentView()
         }
     }
 }
 
 struct ICTextField: View {
     var title: String
-    @State var text: String
+    var keyboardType: UIKeyboardType = .default
+    @Binding var text: String
 
     var body: some View {
         Group {
@@ -58,6 +65,7 @@ struct ICTextField: View {
                 .overlay {
                     TextField("", text: $text)
                         .padding(.leading)
+                        .keyboardType(keyboardType)
                 }
                 .frame(height: 50)
         }
@@ -72,12 +80,13 @@ enum ButtonContext {
 struct ICMainButton: View {
     var buttonText: String
     var context: ButtonContext
+    var action: (() -> Void)? = nil
     var body: some View {
         Button {
-            
+            action?()
         } label: {
             Rectangle()
-                .frame(width: .infinity, height: 50)
+                .frame(height: 50)
                 .foregroundColor(context == .positive ? .green : .red.opacity(0.1))
                 .cornerRadius(16)
                 .overlay {

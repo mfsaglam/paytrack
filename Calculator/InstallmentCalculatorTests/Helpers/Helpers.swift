@@ -30,6 +30,7 @@ func makeInstallment(
 ) -> Installment {
     let installment = Installment(
         id: UUID(),
+        name: "",
         monthlyPayment: monthlyPayment,
         months: months,
         startingDate: startingDate.date,

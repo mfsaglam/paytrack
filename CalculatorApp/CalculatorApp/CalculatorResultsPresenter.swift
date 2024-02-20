@@ -9,8 +9,8 @@ import Foundation
 import InstallmentCalculator
 
 class CalculationResultsPresenter {
-    let calculator: Calculator
-    let installments: [Installment]
+    private let calculator: Calculator
+    private let installments: [Installment]
     
     init(calculator: Calculator, installments: [Installment]) {
         self.calculator = calculator
@@ -24,6 +24,10 @@ class CalculationResultsPresenter {
             currentlyPaying: "$\(formatDoubleToString(result.monthlyTotal))",
             remainingMonths: "\(result.totalRemainingMonths)"
         )
+    }
+    
+    var presentableInstallments: [PresentableInstallment] {
+        installments.map { $0.presentable }
     }
 
     private func formatDoubleToString(_ number: Double) -> String {
