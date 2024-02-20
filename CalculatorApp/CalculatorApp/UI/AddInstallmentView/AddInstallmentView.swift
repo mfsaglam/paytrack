@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct AddInstallmentView: View {
-    var name: String
-    var totalPrice: String
-    var monthlyPayment: String
-    var paymentDate: String
+    
+    @StateObject var viewModel = AddInstallmentViewViewModel()
+    
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
-                ICTextField(title: "Name", keyboardType: .default, text: name)
-                ICTextField(title: "Total price", keyboardType: .decimalPad, text: totalPrice)
-                ICTextField(title: "Monthly payment", keyboardType: .decimalPad, text: monthlyPayment)
-                ICTextField(title: "Payment date", keyboardType: .numberPad, text: paymentDate)
+                ICTextField(title: "Name", keyboardType: .default, text: $viewModel.name)
+                ICTextField(title: "Total price", keyboardType: .decimalPad, text: $viewModel.totalPrice)
+                ICTextField(title: "Monthly payment", keyboardType: .decimalPad, text: $viewModel.monthlyPayment)
+                ICTextField(title: "Payment date", keyboardType: .numberPad, text: $viewModel.paymentDate)
                 Spacer()
                     .frame(height: 50)
             }
@@ -27,8 +26,12 @@ struct AddInstallmentView: View {
             
             VStack {
                 Spacer()
-                ICMainButton(buttonText: "Add", context: .positive)
-                ICMainButton(buttonText: "Cancel", context: .negative)
+                ICMainButton(buttonText: "Add", context: .positive) {
+                    viewModel.saveChanges()
+                }
+                ICMainButton(buttonText: "Cancel", context: .negative) {
+                    print("cancelled")
+                }
             }
             .padding(.horizontal)
         }
@@ -38,7 +41,7 @@ struct AddInstallmentView: View {
 struct AddInstallmentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddInstallmentView(name: "", totalPrice: "", monthlyPayment: "", paymentDate: "")
+            AddInstallmentView()
         }
     }
 }
@@ -46,7 +49,7 @@ struct AddInstallmentView_Previews: PreviewProvider {
 struct ICTextField: View {
     var title: String
     var keyboardType: UIKeyboardType = .default
-    @State var text: String
+    @Binding var text: String
 
     var body: some View {
         Group {
@@ -77,9 +80,10 @@ enum ButtonContext {
 struct ICMainButton: View {
     var buttonText: String
     var context: ButtonContext
+    var action: (() -> Void)? = nil
     var body: some View {
         Button {
-            
+            action?()
         } label: {
             Rectangle()
                 .frame(height: 50)
