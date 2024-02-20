@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ToolbarButton: View {
+    var action: (() -> Void)? = nil
     var body: some View {
         Button {
-            
+            action?()
         } label: {
             Image(systemName: "plus")
                 .foregroundColor(.green)

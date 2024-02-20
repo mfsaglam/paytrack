@@ -37,12 +37,16 @@ struct ContentView: View {
                 }
             }
 
-            FloatingButton()
+            FloatingButton() {
+                print("add")
+            }
         }
         .navigationTitle("My Installments")
         .toolbar {
             ToolbarItem {
-                ToolbarButton()
+                ToolbarButton() {
+                    print("add from navigation")
+                }
             }
         }
     }
