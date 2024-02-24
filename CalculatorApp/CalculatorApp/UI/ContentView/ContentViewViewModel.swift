@@ -10,18 +10,20 @@ import SwiftUI
 final class ContentViewViewModel: ObservableObject {
     let presenter: CalculationResultsPresenter?
     
-    @Published var result: PresentableResult?
-    @Published var installments: [PresentableInstallment]
+    @Published var result: PresentableResult? = nil
+    @Published var installments: [PresentableInstallment] = []
     var isEmpty: Bool {
         installments.isEmpty
     }
     
-    
     init(presenter: CalculationResultsPresenter) {
         self.presenter = presenter
         
-        self.result = presenter.presentableResult
-        self.installments = presenter.presentableInstallments
+        presenter.presentResults { [weak self] result, installments in
+            guard let self else { return }
+            self.result = result
+            self.installments = installments
+        }
     }
     
     private init(result: PresentableResult, installments: [PresentableInstallment]) {

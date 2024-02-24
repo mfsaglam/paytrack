@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1212D48C2B8443070084F189 /* AddInstallmentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D48B2B8443070084F189 /* AddInstallmentViewViewModel.swift */; };
+		1212D48E2B8A907D0084F189 /* CalculationResultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */; };
 		12433DCB2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12433DCA2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift */; };
 		12433DCD2B2EF4DB00FB9FF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */; };
 		12433DCF2B2EF4DC00FB9FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12433DCE2B2EF4DC00FB9FF2 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		1212D48B2B8443070084F189 /* AddInstallmentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstallmentViewViewModel.swift; sourceTree = "<group>"; };
+		1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultsInteractor.swift; sourceTree = "<group>"; };
 		12433DC72B2EF4DB00FB9FF2 /* CalculatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12433DCA2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAppApp.swift; sourceTree = "<group>"; };
 		12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
 				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
 				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
+				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				12C45E432B4ADF510046F283 /* InstallmentStore.swift in Sources */,
 				1212D48C2B8443070084F189 /* AddInstallmentViewViewModel.swift in Sources */,
 				12C45E372B43ADEF0046F283 /* PresentableResult.swift in Sources */,
+				1212D48E2B8A907D0084F189 /* CalculationResultsInteractor.swift in Sources */,
 				126DD1B12B2FE8AB0030F6D9 /* InfoRectangle.swift in Sources */,
 				127334D42B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift in Sources */,
 				127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */,
