@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddInstallmentView: View {
-    
+    @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel = AddInstallmentViewViewModel()
     
     var body: some View {
@@ -30,7 +30,7 @@ struct AddInstallmentView: View {
                     viewModel.saveChanges()
                 }
                 ICMainButton(buttonText: "Cancel", context: .negative) {
-                    print("cancelled")
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
             .padding(.horizontal)
