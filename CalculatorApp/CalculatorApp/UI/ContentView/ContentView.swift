@@ -11,41 +11,43 @@ struct ContentView: View {
     @StateObject var viewModel: ContentViewViewModel
     
     var body: some View {
-        ZStack {
-            if viewModel.isEmpty {
-                EmptyListView()
-            } else {
-                VStack {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            if let result = viewModel.result {
-                                InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount)
-                                InfoRectangle(icon: "money-send", description: "Currently paying", amount: result.currentlyPaying)
-                                InfoRectangle(icon: "coin", description: "Remaining months", amount: result.remainingMonths)
+        NavigationView {
+            ZStack {
+                if viewModel.isEmpty {
+                    EmptyListView()
+                } else {
+                    VStack {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                if let result = viewModel.result {
+                                    InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount)
+                                    InfoRectangle(icon: "money-send", description: "Currently paying", amount: result.currentlyPaying)
+                                    InfoRectangle(icon: "coin", description: "Remaining months", amount: result.remainingMonths)
+                                }
                             }
+                            .padding(.horizontal, 16)
                         }
-                        .padding(.horizontal, 16)
-                    }
-                    
-                    ListTitle()
-                    
-                    ScrollView {
-                        ForEach(viewModel.installments) { installment in
-                            InstallmentCell(installment: installment)
+                        
+                        ListTitle()
+                        
+                        ScrollView {
+                            ForEach(viewModel.installments) { installment in
+                                InstallmentCell(installment: installment)
+                            }
                         }
                     }
                 }
+                
+                NavigationLink(destination: AddInstallmentView()) {
+                    FloatingButton()
+                }
             }
-
-            FloatingButton() {
-                print("add")
-            }
-        }
-        .navigationTitle("My Installments")
-        .toolbar {
-            ToolbarItem {
-                ToolbarButton() {
-                    print("add from navigation")
+            .navigationTitle("My Installments")
+            .toolbar {
+                ToolbarItem {
+                    NavigationLink(destination: AddInstallmentView()) {
+                        ToolbarButton()
+                    }
                 }
             }
         }

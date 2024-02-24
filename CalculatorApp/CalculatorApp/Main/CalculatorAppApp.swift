@@ -23,11 +23,9 @@ struct CalculatorAppApp: App {
         )
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                ContentView(
-                    viewModel: viewModel
-                )
-            }
+            ContentView(
+                viewModel: viewModel
+            )
         }
     }
 }

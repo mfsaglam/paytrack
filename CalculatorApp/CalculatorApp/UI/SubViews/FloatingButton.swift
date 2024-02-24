@@ -8,25 +8,20 @@
 import SwiftUI
 
 struct FloatingButton: View {
-    var action: (() -> Void)?
     var body: some View {
         HStack {
             Spacer()
             VStack {
                 Spacer()
-                Button {
-                    action?()
-                } label: {
-                    RoundedRectangle(cornerRadius: 12)
-                        .frame(width: 44, height: 44)
-                        .foregroundColor(.green)
-                        .overlay {
-                            Image(systemName: "plus")
-                                .foregroundColor(.white)
-                                .font(.system(size: 24))
-                        }
-                        .padding(32)
-                }
+                RoundedRectangle(cornerRadius: 12)
+                    .frame(width: 44, height: 44)
+                    .foregroundColor(.green)
+                    .overlay {
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                            .font(.system(size: 24))
+                    }
+                    .padding(32)
             }
         }
     }
