@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddInstallmentView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var viewModel = AddInstallmentViewViewModel()
+    @StateObject var viewModel: AddInstallmentViewViewModel
     
     var body: some View {
         ZStack {
@@ -28,6 +28,7 @@ struct AddInstallmentView: View {
                 Spacer()
                 ICMainButton(buttonText: "Add", context: .positive) {
                     viewModel.saveChanges()
+                    presentationMode.wrappedValue.dismiss()
                 }
                 ICMainButton(buttonText: "Cancel", context: .negative) {
                     presentationMode.wrappedValue.dismiss()
@@ -41,11 +42,18 @@ struct AddInstallmentView: View {
 struct AddInstallmentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddInstallmentView()
+            AddInstallmentView(viewModel: .forPreview())
         }
     }
 }
 
+extension AddInstallmentViewViewModel {
+    static func forPreview() -> AddInstallmentViewViewModel {
+        .init(
+            interactor: nil
+        )
+    }
+}
 struct ICTextField: View {
     var title: String
     var keyboardType: UIKeyboardType = .default

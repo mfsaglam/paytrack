@@ -4,25 +4,33 @@ import Foundation
 import InstallmentCalculator
 
 protocol CalculationResultsInteractorProtocol {
-    func loadInstallments(completion: @escaping ([Installment]) -> Void)
+    func loadInstallments() async throws -> [Installment]
+    func save(_ installment: Installment) async throws
+    func delete(_ installment: Installment) async throws
 }
 
 class CalculationResultsInteractor: CalculationResultsInteractorProtocol {
     private let installmentLoader: InstallmentLoader
+    private var installments = [Installment]()
 
     init(installmentLoader: InstallmentLoader) {
         self.installmentLoader = installmentLoader
     }
 
-    func loadInstallments(completion: @escaping ([Installment]) -> Void) {
-        Task { @MainActor in
-            do {
-                let installments = try await installmentLoader.loadInstallments()
-                completion(installments)
-            } catch {
-                // Handle error (e.g., show an alert)
-                completion([])
-            }
+    func loadInstallments() async throws -> [Installment] {
+        do {
+            return try await installmentLoader.loadInstallments()
+        } catch {
+            print(error)
+            return []
         }
+    }
+    
+    func save(_ installment: Installment) async throws {
+        try await installmentLoader.save(installment)
+    }
+    
+    func delete(_ installment: Installment) async throws {
+        try await installmentLoader.delete(installment)
     }
 }

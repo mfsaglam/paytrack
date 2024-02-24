@@ -9,7 +9,7 @@ import Foundation
 import InstallmentCalculator
 
 class CalculationResultsPresenter {
-    private let interactor: CalculationResultsInteractorProtocol
+    let interactor: CalculationResultsInteractorProtocol
     private let calculator: Calculator
     
     init(calculator: Calculator, interactor: CalculationResultsInteractorProtocol) {
@@ -17,20 +17,18 @@ class CalculationResultsPresenter {
         self.interactor = interactor
     }
     
-    func presentResults(completion: @escaping (PresentableResult, [PresentableInstallment]) -> Void) {
-        interactor.loadInstallments { [weak self] installments in
-            guard let self = self else { return }
-            
-            let result = self.calculator.calculate(installments: installments)
-            let presentableResult = PresentableResult(
-                totalAmount: "$\(self.formatDoubleToString(result.totalAmount))",
-                currentlyPaying: "$\(self.formatDoubleToString(result.monthlyTotal))",
-                remainingMonths: "\(result.totalRemainingMonths)"
-            )
-            
-            let presentableInstallments = installments.map { $0.presentable }
-            completion(presentableResult, presentableInstallments)
-        }
+    func presentResults() async throws -> (PresentableResult, [PresentableInstallment]) {
+        let installments = try await interactor.loadInstallments()
+        let result = self.calculator.calculate(installments: installments)
+        let presentableResult = PresentableResult(
+            totalAmount: "$\(self.formatDoubleToString(result.totalAmount))",
+            currentlyPaying: "$\(self.formatDoubleToString(result.monthlyTotal))",
+            remainingMonths: "\(result.totalRemainingMonths)"
+        )
+        
+        let presentableInstallments = installments.map { $0.presentable }
+
+        return (presentableResult, presentableInstallments)
     }
     
     private func formatDoubleToString(_ number: Double) -> String {

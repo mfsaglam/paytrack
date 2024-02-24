@@ -38,14 +38,19 @@ struct ContentView: View {
                     }
                 }
                 
-                NavigationLink(destination: AddInstallmentView()) {
+                NavigationLink(destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))) {
                     FloatingButton()
+                }
+            }
+            .onAppear() {
+                Task { @MainActor in
+                    try await viewModel.presentResults()
                 }
             }
             .navigationTitle("My Installments")
             .toolbar {
                 ToolbarItem {
-                    NavigationLink(destination: AddInstallmentView()) {
+                    NavigationLink(destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))) {
                         ToolbarButton()
                     }
                 }

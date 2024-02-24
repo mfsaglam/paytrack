@@ -13,6 +13,12 @@ class AddInstallmentViewViewModel: ObservableObject {
     @Published var totalPrice: String = ""
     @Published var monthlyPayment: String = ""
     @Published var paymentDate: String = ""
+    
+    let interactor: CalculationResultsInteractorProtocol?
+    
+    init(interactor: CalculationResultsInteractorProtocol?) {
+        self.interactor = interactor
+    }
 
     var isValidForm: Bool {
         guard !name.isEmpty && !totalPrice.isEmpty && !monthlyPayment.isEmpty && !paymentDate.isEmpty else {
@@ -24,6 +30,16 @@ class AddInstallmentViewViewModel: ObservableObject {
     
     func saveChanges() {
         guard isValidForm else { return }
-        print("saved")
+        let installment = Installment(
+            id: UUID(), name: name,
+            monthlyPayment: Double(monthlyPayment)!,
+            months: Int(Double(totalPrice)! / Double(monthlyPayment)!),
+            startingDate: Date(),
+            paymentDay: Int(paymentDate)!
+        )
+
+        Task { @MainActor in
+            try await interactor?.save(installment)
+        }
     }
 }

@@ -18,12 +18,12 @@ final class ContentViewViewModel: ObservableObject {
     
     init(presenter: CalculationResultsPresenter) {
         self.presenter = presenter
-        
-        presenter.presentResults { [weak self] result, installments in
-            guard let self else { return }
-            self.result = result
-            self.installments = installments
-        }
+    }
+    
+    func presentResults() async throws {
+        let (result, installments) = try await presenter!.presentResults()
+        self.result = result
+        self.installments = installments
     }
     
     private init(result: PresentableResult, installments: [PresentableInstallment]) {

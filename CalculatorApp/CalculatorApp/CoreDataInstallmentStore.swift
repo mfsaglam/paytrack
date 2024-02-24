@@ -27,6 +27,7 @@ class CoreDataInstallmentStore: InstallmentStore {
             return try await perform { context in
                 let fetchRequest: NSFetchRequest<InstallmentEntity> = InstallmentEntity.fetchRequest()
                 let result = try context.fetch(fetchRequest)
+                print("fetched \(result)")
                 let installments = result.map { $0.asModel }
                 return installments
             }
