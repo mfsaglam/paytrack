@@ -21,9 +21,10 @@ final class ContentViewViewModel: ObservableObject {
     }
     
     func presentResults() async throws {
-        let (result, installments) = try await presenter!.presentResults()
-        self.result = result
-        self.installments = installments
+        if let (result, installments) = try await presenter?.presentResults() {
+            self.result = result
+            self.installments = installments
+        }
     }
     
     private init(result: PresentableResult, installments: [PresentableInstallment]) {

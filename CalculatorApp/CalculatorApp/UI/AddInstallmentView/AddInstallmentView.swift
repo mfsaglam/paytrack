@@ -10,6 +10,7 @@ import SwiftUI
 struct AddInstallmentView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: AddInstallmentViewViewModel
+    @State private var showingAlert = false
     
     var body: some View {
         ZStack {
@@ -27,14 +28,21 @@ struct AddInstallmentView: View {
             VStack {
                 Spacer()
                 ICMainButton(buttonText: "Add", context: .positive) {
-                    viewModel.saveChanges()
-                    presentationMode.wrappedValue.dismiss()
+                    if viewModel.isValidForm {
+                        viewModel.saveChanges()
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        showingAlert = true
+                    }
                 }
                 ICMainButton(buttonText: "Cancel", context: .negative) {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
             .padding(.horizontal)
+            .alert("Please check all the necessary fields are filled.", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) { }
+            }
         }
     }
 }
