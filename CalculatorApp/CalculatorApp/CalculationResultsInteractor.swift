@@ -6,7 +6,7 @@ import InstallmentCalculator
 protocol CalculationResultsInteractorProtocol {
     func loadInstallments() async throws -> [Installment]
     func save(_ installment: Installment) async throws
-    func delete(_ installment: Installment) async throws
+    func delete(_ id: UUID) async throws
 }
 
 class CalculationResultsInteractor: CalculationResultsInteractorProtocol {
@@ -30,7 +30,7 @@ class CalculationResultsInteractor: CalculationResultsInteractorProtocol {
         try await installmentLoader.save(installment)
     }
     
-    func delete(_ installment: Installment) async throws {
-        try await installmentLoader.delete(installment)
+    func delete(_ id: UUID) async throws {
+        try await installmentLoader.delete(id)
     }
 }

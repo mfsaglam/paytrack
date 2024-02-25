@@ -30,11 +30,16 @@ struct ContentView: View {
                         
                         ListTitle()
                         
-                        ScrollView {
+                        List {
                             ForEach(viewModel.installments) { installment in
                                 InstallmentCell(installment: installment)
+                                    .listRowSeparator(.hidden)
+                            }
+                            .onDelete { indexSet in
+                                viewModel.delete(at: indexSet)
                             }
                         }
+                        .listStyle(.plain)
                         NavigationLink(destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))) {
                             FloatingButton()
                         }

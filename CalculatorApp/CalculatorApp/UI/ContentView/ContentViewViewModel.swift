@@ -5,6 +5,7 @@
 //  Created by Fatih Sağlam on 15.02.2024.
 //
 
+import InstallmentCalculator
 import SwiftUI
 
 final class ContentViewViewModel: ObservableObject {
@@ -24,6 +25,14 @@ final class ContentViewViewModel: ObservableObject {
         if let (result, installments) = try await presenter?.presentResults() {
             self.result = result
             self.installments = installments
+        }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        let source = offsets.first!
+        let installmentToDelete = installments[source]
+        Task { @MainActor in
+            try await presenter?.interactor.delete(installmentToDelete.id)
         }
     }
     

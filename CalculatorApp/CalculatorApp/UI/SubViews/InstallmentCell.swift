@@ -14,7 +14,6 @@ struct InstallmentCell: View {
         RoundedRectangle(cornerRadius: 16)
             .frame(height: 60)
             .foregroundColor(.gray).opacity(0.1)
-            .padding(.horizontal, 16)
             .overlay {
                 HStack {
                     VStack(alignment: .leading) {
@@ -51,7 +50,6 @@ struct InstallmentCell: View {
                             .lineLimit(1)
                     }
                 }
-                .padding(.horizontal)
                 .padding(.horizontal)
             }
     }
