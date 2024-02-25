@@ -16,6 +16,8 @@ extension Installment {
         return NSFetchRequest<Installment>(entityName: "Installment")
     }
 
+    @NSManaged public var id: UUID
+    @NSManaged public var name: String
     @NSManaged public var monthlyPayment: Double
     @NSManaged public var months: Int64
     @NSManaged public var startingDate: Date?

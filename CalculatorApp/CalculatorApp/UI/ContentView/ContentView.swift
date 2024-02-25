@@ -35,11 +35,10 @@ struct ContentView: View {
                                 InstallmentCell(installment: installment)
                             }
                         }
+                        NavigationLink(destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))) {
+                            FloatingButton()
+                        }
                     }
-                }
-                
-                NavigationLink(destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))) {
-                    FloatingButton()
                 }
             }
             .onAppear() {

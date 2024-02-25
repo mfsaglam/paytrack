@@ -40,6 +40,7 @@ class CoreDataInstallmentStore: InstallmentStore {
         try await perform { context in
             let entity = InstallmentEntity(context: context)
             entity.id = installment.id
+            entity.name = installment.name
             entity.monthlyPayment = installment.monthlyPayment
             entity.months = Int64(installment.months)
             entity.startingDate = installment.startingDate
