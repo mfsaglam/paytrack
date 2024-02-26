@@ -44,10 +44,12 @@ final class ContentViewViewModel: ObservableObject {
 }
 
 extension ContentViewViewModel {
-    static func forPreview() -> ContentViewViewModel {
+    static func forPreview(
+        isEmpty: Bool = false
+    ) -> ContentViewViewModel {
         .init(
             result: .init(totalAmount: "123", currentlyPaying: "12", remainingMonths: "12"),
-            installments: [
+            installments: isEmpty ? [] : [
                 .init(id: .init(), name: "iPhone", paymentDay: 2, paidMonths: 2, totalMonths: 12, remainingAmount: 500, monthlyPayment: 59.90)
             ]
         )

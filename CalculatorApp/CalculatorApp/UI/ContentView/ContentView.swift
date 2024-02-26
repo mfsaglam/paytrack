@@ -40,11 +40,11 @@ struct ContentView: View {
                             }
                         }
                         .listStyle(.plain)
-                        NavigationLink(destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))) {
-                            FloatingButton()
-                        }
                     }
                 }
+                FloatingButton(
+                    destination: AddInstallmentView(viewModel: AddInstallmentViewViewModel(interactor: viewModel.presenter?.interactor))
+                )
             }
             .onAppear() {
                 Task { @MainActor in
@@ -66,7 +66,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView(viewModel: .forPreview())
+            ContentView(viewModel: .forPreview(isEmpty: true))
         }
     }
 }
