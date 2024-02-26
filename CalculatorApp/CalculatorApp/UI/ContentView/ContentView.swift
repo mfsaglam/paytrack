@@ -34,6 +34,7 @@ struct ContentView: View {
                             ForEach(viewModel.installments) { installment in
                                 InstallmentCell(installment: installment)
                                     .listRowSeparator(.hidden)
+                                    .frame(height: 50)
                             }
                             .onDelete { indexSet in
                                 viewModel.delete(at: indexSet)
@@ -66,7 +67,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView(viewModel: .forPreview(isEmpty: true))
+            ContentView(viewModel: .forPreview(isEmpty: false))
         }
     }
 }
