@@ -21,12 +21,22 @@ class CalculationResultsPresenter {
         let installments = try await interactor.loadInstallments()
         let result = self.calculator.calculate(installments: installments)
         let presentableResult = PresentableResult(
-            totalAmount: "$\(self.formatDoubleToString(result.totalAmount))",
-            currentlyPaying: "$\(self.formatDoubleToString(result.monthlyTotal))",
+            totalAmount: "$\(formatDoubleToString(result.totalAmount))",
+            currentlyPaying: "$\(formatDoubleToString(result.monthlyTotal))",
             remainingMonths: "\(result.totalRemainingMonths)"
         )
         
-        let presentableInstallments = installments.map { $0.presentable }
+        let presentableInstallments = installments.map {
+            PresentableInstallment(
+                id: $0.id,
+                name: $0.name,
+                paymentDay: "\($0.paymentDay)",
+                paidMonths: "\($0.months - $0.remainingMonths)",
+                totalMonths: "\($0.months)",
+                remainingAmount: "\(formatDoubleToString($0.remainingAmount))",
+                monthlyPayment: "\(formatDoubleToString($0.monthlyPayment))"
+            )
+        }
 
         return (presentableResult, presentableInstallments)
     }

@@ -50,9 +50,9 @@ extension ContentViewViewModel {
         .init(
             result: .init(totalAmount: "123", currentlyPaying: "12", remainingMonths: "12"),
             installments: isEmpty ? [] : [
-                .init(id: .init(), name: "iPhone", paymentDay: 2, paidMonths: 2, totalMonths: 12, remainingAmount: 500, monthlyPayment: 59.90),
-                .init(id: .init(), name: "iPhone", paymentDay: 2, paidMonths: 2, totalMonths: 12, remainingAmount: 500, monthlyPayment: 59.90),
-                .init(id: .init(), name: "iPhone", paymentDay: 2, paidMonths: 2, totalMonths: 12, remainingAmount: 500, monthlyPayment: 59.90),
+                .init(id: .init(), name: "iPhone", paymentDay: "2", paidMonths: "2", totalMonths: "12", remainingAmount: "500", monthlyPayment: "59.90"),
+                .init(id: .init(), name: "iPhone", paymentDay: "2", paidMonths: "2", totalMonths: "12", remainingAmount: "500", monthlyPayment: "59.90"),
+                .init(id: .init(), name: "iPhone", paymentDay: "2", paidMonths: "2", totalMonths: "12", remainingAmount: "500", monthlyPayment: "59.90"),
             ]
         )
     }

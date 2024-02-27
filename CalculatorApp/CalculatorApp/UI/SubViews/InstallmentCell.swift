@@ -57,6 +57,6 @@ struct InstallmentCell: View {
 
 struct InstallmentCell_Previews: PreviewProvider {
     static var previews: some View {
-        InstallmentCell(installment: .init(id: UUID(), name: "iPhone", paymentDay: 5, paidMonths: 1, totalMonths: 12, remainingAmount: 1450, monthlyPayment: 50))
+        InstallmentCell(installment: .init(id: UUID(), name: "iPhone", paymentDay: "5", paidMonths: "1", totalMonths: "12", remainingAmount: "1450", monthlyPayment: "50"))
     }
 }
