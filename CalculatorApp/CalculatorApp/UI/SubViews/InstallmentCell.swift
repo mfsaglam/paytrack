@@ -14,7 +14,6 @@ struct InstallmentCell: View {
         RoundedRectangle(cornerRadius: 16)
             .frame(height: 60)
             .foregroundColor(.gray).opacity(0.1)
-            .padding(.horizontal, 16)
             .overlay {
                 HStack {
                     VStack(alignment: .leading) {
@@ -52,13 +51,12 @@ struct InstallmentCell: View {
                     }
                 }
                 .padding(.horizontal)
-                .padding(.horizontal)
             }
     }
 }
 
 struct InstallmentCell_Previews: PreviewProvider {
     static var previews: some View {
-        InstallmentCell(installment: .init(id: UUID(), name: "iPhone", paymentDay: 5, paidMonths: 1, totalMonths: 12, remainingAmount: 1450, monthlyPayment: 50))
+        InstallmentCell(installment: .init(id: UUID(), name: "iPhone", paymentDay: "5", paidMonths: "1", totalMonths: "12", remainingAmount: "1450", monthlyPayment: "50"))
     }
 }

@@ -9,34 +9,45 @@ import Foundation
 import InstallmentCalculator
 
 class CalculationResultsPresenter {
+    let interactor: CalculationResultsInteractorProtocol
     private let calculator: Calculator
-    private let installments: [Installment]
     
-    init(calculator: Calculator, installments: [Installment]) {
+    init(calculator: Calculator, interactor: CalculationResultsInteractorProtocol) {
         self.calculator = calculator
-        self.installments = installments
+        self.interactor = interactor
     }
-
-    var presentableResult: PresentableResult {
-        let result = calculator.calculate(installments: installments)
-        return PresentableResult(
+    
+    func presentResults() async throws -> (PresentableResult, [PresentableInstallment]) {
+        let installments = try await interactor.loadInstallments()
+        let result = self.calculator.calculate(installments: installments)
+        let presentableResult = PresentableResult(
             totalAmount: "$\(formatDoubleToString(result.totalAmount))",
             currentlyPaying: "$\(formatDoubleToString(result.monthlyTotal))",
             remainingMonths: "\(result.totalRemainingMonths)"
         )
+        
+        let presentableInstallments = installments.map {
+            PresentableInstallment(
+                id: $0.id,
+                name: $0.name,
+                paymentDay: "\($0.paymentDay)",
+                paidMonths: "\($0.months - $0.remainingMonths)",
+                totalMonths: "\($0.months)",
+                remainingAmount: "\(formatDoubleToString($0.remainingAmount))",
+                monthlyPayment: "\(formatDoubleToString($0.monthlyPayment))"
+            )
+        }
+
+        return (presentableResult, presentableInstallments)
     }
     
-    var presentableInstallments: [PresentableInstallment] {
-        installments.map { $0.presentable }
-    }
-
     private func formatDoubleToString(_ number: Double) -> String {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = number.truncatingRemainder(dividingBy: 1) == 0 ? 0 : 2
         formatter.minimumFractionDigits = formatter.maximumFractionDigits
         formatter.roundingMode = .halfUp
         formatter.numberStyle = .decimal
-
+        
         if let formattedString = formatter.string(from: NSNumber(value: number)) {
             return formattedString
         } else {

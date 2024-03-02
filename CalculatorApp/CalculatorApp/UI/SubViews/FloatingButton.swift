@@ -7,16 +7,14 @@
 
 import SwiftUI
 
-struct FloatingButton: View {
-    var action: (() -> Void)?
+struct FloatingButton<T: View>: View {
+    let destination: T
     var body: some View {
         HStack {
             Spacer()
             VStack {
                 Spacer()
-                Button {
-                    action?()
-                } label: {
+                NavigationLink(destination: destination) {
                     RoundedRectangle(cornerRadius: 12)
                         .frame(width: 44, height: 44)
                         .foregroundColor(.green)
@@ -34,6 +32,6 @@ struct FloatingButton: View {
 
 struct FloatingButton_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingButton()
+        FloatingButton(destination: Text("Preview"))
     }
 }

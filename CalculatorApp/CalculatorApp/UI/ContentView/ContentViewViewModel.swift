@@ -5,23 +5,35 @@
 //  Created by Fatih Sağlam on 15.02.2024.
 //
 
+import InstallmentCalculator
 import SwiftUI
 
 final class ContentViewViewModel: ObservableObject {
     let presenter: CalculationResultsPresenter?
     
-    @Published var result: PresentableResult?
-    @Published var installments: [PresentableInstallment]
+    @Published var result: PresentableResult? = nil
+    @Published var installments: [PresentableInstallment] = []
     var isEmpty: Bool {
         installments.isEmpty
     }
     
-    
     init(presenter: CalculationResultsPresenter) {
         self.presenter = presenter
-        
-        self.result = presenter.presentableResult
-        self.installments = presenter.presentableInstallments
+    }
+    
+    func presentResults() async throws {
+        if let (result, installments) = try await presenter?.presentResults() {
+            self.result = result
+            self.installments = installments
+        }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        let source = offsets.first!
+        let installmentToDelete = installments[source]
+        Task { @MainActor in
+            try await presenter?.interactor.delete(installmentToDelete.id)
+        }
     }
     
     private init(result: PresentableResult, installments: [PresentableInstallment]) {
@@ -32,11 +44,15 @@ final class ContentViewViewModel: ObservableObject {
 }
 
 extension ContentViewViewModel {
-    static func forPreview() -> ContentViewViewModel {
+    static func forPreview(
+        isEmpty: Bool = false
+    ) -> ContentViewViewModel {
         .init(
             result: .init(totalAmount: "123", currentlyPaying: "12", remainingMonths: "12"),
-            installments: [
-                .init(id: .init(), name: "iPhone", paymentDay: 2, paidMonths: 2, totalMonths: 12, remainingAmount: 500, monthlyPayment: 59.90)
+            installments: isEmpty ? [] : [
+                .init(id: .init(), name: "iPhone", paymentDay: "2", paidMonths: "2", totalMonths: "12", remainingAmount: "500", monthlyPayment: "59.90"),
+                .init(id: .init(), name: "iPhone", paymentDay: "2", paidMonths: "2", totalMonths: "12", remainingAmount: "500", monthlyPayment: "59.90"),
+                .init(id: .init(), name: "iPhone", paymentDay: "2", paidMonths: "2", totalMonths: "12", remainingAmount: "500", monthlyPayment: "59.90"),
             ]
         )
     }

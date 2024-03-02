@@ -27,6 +27,7 @@ class CoreDataInstallmentStore: InstallmentStore {
             return try await perform { context in
                 let fetchRequest: NSFetchRequest<InstallmentEntity> = InstallmentEntity.fetchRequest()
                 let result = try context.fetch(fetchRequest)
+                print("fetched \(result)")
                 let installments = result.map { $0.asModel }
                 return installments
             }
@@ -39,6 +40,7 @@ class CoreDataInstallmentStore: InstallmentStore {
         try await perform { context in
             let entity = InstallmentEntity(context: context)
             entity.id = installment.id
+            entity.name = installment.name
             entity.monthlyPayment = installment.monthlyPayment
             entity.months = Int64(installment.months)
             entity.startingDate = installment.startingDate
@@ -53,11 +55,12 @@ class CoreDataInstallmentStore: InstallmentStore {
         }
     }
     
-    func delete(_ installment: Installment) async throws {
+    func delete(_ id: UUID) async throws {
         try await perform { context in
             let fetchRequest: NSFetchRequest<InstallmentEntity> = InstallmentEntity.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", installment.id.uuidString)
-            
+            print(id.uuidString)
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id.uuidString)
+
             do {
                 let result = try context.fetch(fetchRequest)
                 if let entityToDelete = result.first {

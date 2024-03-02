@@ -9,12 +9,8 @@ import SwiftUI
 
 struct ToolbarButton: View {
     var body: some View {
-        Button {
-            
-        } label: {
-            Image(systemName: "plus")
-                .foregroundColor(.green)
-        }
+        Image(systemName: "plus")
+            .foregroundColor(.green)
     }
 }
 

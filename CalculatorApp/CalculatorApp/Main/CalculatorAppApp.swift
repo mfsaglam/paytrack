@@ -10,10 +10,16 @@ import SwiftUI
 
 @main
 struct CalculatorAppApp: App {
-    let viewModel: ContentViewViewModel =
+    var viewModel: ContentViewViewModel =
         .init(
-            presenter: .init(calculator: .init(),
-                             installments: [])
+            presenter: .init(
+                calculator: Calculator(),
+                interactor: CalculationResultsInteractor(
+                    installmentLoader: LocalInstallmentLoader(
+                        store: CoreDataInstallmentStore()
+                    )
+                )
+            )
         )
     var body: some Scene {
         WindowGroup {

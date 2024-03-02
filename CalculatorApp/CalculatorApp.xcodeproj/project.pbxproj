@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1212D48C2B8443070084F189 /* AddInstallmentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D48B2B8443070084F189 /* AddInstallmentViewViewModel.swift */; };
+		1212D48E2B8A907D0084F189 /* CalculationResultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */; };
 		12433DCB2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12433DCA2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift */; };
 		12433DCD2B2EF4DB00FB9FF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */; };
 		12433DCF2B2EF4DC00FB9FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12433DCE2B2EF4DC00FB9FF2 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 		127334D92B701594005AA3DE /* Installment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 127334D72B701593005AA3DE /* Installment.xcdatamodeld */; };
 		127C78212B387B6E004AC86D /* CalculatorAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C78202B387B6E004AC86D /* CalculatorAppTests.swift */; };
 		127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C78232B3882F2004AC86D /* AddInstallmentView.swift */; };
+		12AB33672B8FD060000DF8D9 /* InstallmentCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AB33662B8FD060000DF8D9 /* InstallmentCalculator.framework */; };
+		12AB33682B8FD060000DF8D9 /* InstallmentCalculator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12AB33662B8FD060000DF8D9 /* InstallmentCalculator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12C0A88A2B3BE80A00AE0960 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */; };
 		12C0A88C2B42A32400AE0960 /* CalculationResultsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */; };
 		12C0A88F2B430BBB00AE0960 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C0A88E2B430BBB00AE0960 /* Helpers.swift */; };
@@ -51,8 +54,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		12AB33692B8FD060000DF8D9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				12AB33682B8FD060000DF8D9 /* InstallmentCalculator.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1212D48B2B8443070084F189 /* AddInstallmentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstallmentViewViewModel.swift; sourceTree = "<group>"; };
+		1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultsInteractor.swift; sourceTree = "<group>"; };
 		12433DC72B2EF4DB00FB9FF2 /* CalculatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12433DCA2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAppApp.swift; sourceTree = "<group>"; };
 		12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +89,7 @@
 		127334D82B701594005AA3DE /* Installment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Installment.xcdatamodel; sourceTree = "<group>"; };
 		127C78202B387B6E004AC86D /* CalculatorAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAppTests.swift; sourceTree = "<group>"; };
 		127C78232B3882F2004AC86D /* AddInstallmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstallmentView.swift; sourceTree = "<group>"; };
+		12AB33662B8FD060000DF8D9 /* InstallmentCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = InstallmentCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultsPresenterTests.swift; sourceTree = "<group>"; };
 		12C0A88E2B430BBB00AE0960 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -87,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12AB33672B8FD060000DF8D9 /* InstallmentCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +142,7 @@
 				12433DC92B2EF4DB00FB9FF2 /* CalculatorApp */,
 				12433DDA2B2EF4DC00FB9FF2 /* CalculatorAppTests */,
 				12433DC82B2EF4DB00FB9FF2 /* Products */,
+				12AB33652B8FD060000DF8D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +170,7 @@
 				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
 				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
 				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
+				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -213,6 +235,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		12AB33652B8FD060000DF8D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12AB33662B8FD060000DF8D9 /* InstallmentCalculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		12C0A88D2B430B9E00AE0960 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +261,7 @@
 				12433DC32B2EF4DB00FB9FF2 /* Sources */,
 				12433DC42B2EF4DB00FB9FF2 /* Frameworks */,
 				12433DC52B2EF4DB00FB9FF2 /* Resources */,
+				12AB33692B8FD060000DF8D9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,6 +387,7 @@
 				12C45E432B4ADF510046F283 /* InstallmentStore.swift in Sources */,
 				1212D48C2B8443070084F189 /* AddInstallmentViewViewModel.swift in Sources */,
 				12C45E372B43ADEF0046F283 /* PresentableResult.swift in Sources */,
+				1212D48E2B8A907D0084F189 /* CalculationResultsInteractor.swift in Sources */,
 				126DD1B12B2FE8AB0030F6D9 /* InfoRectangle.swift in Sources */,
 				127334D42B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift in Sources */,
 				127C78242B3882F2004AC86D /* AddInstallmentView.swift in Sources */,
@@ -536,8 +568,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -565,8 +597,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

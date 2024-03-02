@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AddInstallmentView: View {
-    
-    @StateObject var viewModel = AddInstallmentViewViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject var viewModel: AddInstallmentViewViewModel
+    @State private var showingAlert = false
     
     var body: some View {
         ZStack {
@@ -27,13 +28,21 @@ struct AddInstallmentView: View {
             VStack {
                 Spacer()
                 ICMainButton(buttonText: "Add", context: .positive) {
-                    viewModel.saveChanges()
+                    if viewModel.isValidForm {
+                        viewModel.saveChanges()
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        showingAlert = true
+                    }
                 }
                 ICMainButton(buttonText: "Cancel", context: .negative) {
-                    print("cancelled")
+                    presentationMode.wrappedValue.dismiss()
                 }
             }
             .padding(.horizontal)
+            .alert("Please check all the necessary fields are filled.", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) { }
+            }
         }
     }
 }
@@ -41,11 +50,18 @@ struct AddInstallmentView: View {
 struct AddInstallmentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddInstallmentView()
+            AddInstallmentView(viewModel: .forPreview())
         }
     }
 }
 
+extension AddInstallmentViewViewModel {
+    static func forPreview() -> AddInstallmentViewViewModel {
+        .init(
+            interactor: nil
+        )
+    }
+}
 struct ICTextField: View {
     var title: String
     var keyboardType: UIKeyboardType = .default
