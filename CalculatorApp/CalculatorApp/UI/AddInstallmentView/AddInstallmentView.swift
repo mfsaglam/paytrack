@@ -11,6 +11,7 @@ struct AddInstallmentView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var viewModel: AddInstallmentViewViewModel
     @State private var showingAlert = false
+    @State private var showingCancelAlert = false
     
     var body: some View {
         ZStack {
@@ -36,12 +37,20 @@ struct AddInstallmentView: View {
                     }
                 }
                 ICMainButton(buttonText: "Cancel", context: .negative) {
-                    presentationMode.wrappedValue.dismiss()
+                    showingCancelAlert = true
                 }
             }
             .padding(.horizontal)
             .alert("Please check all the necessary fields are filled.", isPresented: $showingAlert) {
                 Button("OK", role: .cancel) { }
+            }
+            .alert("Hold on!", isPresented: $showingCancelAlert) {
+                Button("Keep editing", role: .cancel) { }
+                Button("Continue", role: .destructive) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            } message: {
+                Text("Looks like you haven't saved your changes yet. Your data will be lost.")
             }
         }
         .onTapGesture {
