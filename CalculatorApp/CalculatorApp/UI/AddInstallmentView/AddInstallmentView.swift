@@ -44,6 +44,9 @@ struct AddInstallmentView: View {
                 Button("OK", role: .cancel) { }
             }
         }
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
 }
 
