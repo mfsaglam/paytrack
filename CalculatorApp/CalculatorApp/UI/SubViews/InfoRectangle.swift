@@ -11,10 +11,18 @@ struct InfoRectangle: View {
     let icon: String
     let description: String
     let amount: String
+    let isMain: Bool
+    
+    init(icon: String, description: String, amount: String, isMain: Bool = false) {
+        self.icon = icon
+        self.description = description
+        self.amount = amount
+        self.isMain = isMain
+    }
     var body: some View {
         RoundedRectangle(cornerRadius: 12)
             .frame(width: 140, height: 140)
-            .foregroundColor(.green).opacity(0.4)
+            .foregroundColor(.green).opacity( isMain ? 0.4 : 0.1)
             .overlay {
                 HStack {
                     VStack(alignment: .leading, spacing: 12) {

@@ -20,7 +20,7 @@ struct ContentView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 if let result = viewModel.result {
-                                    InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount)
+                                    InfoRectangle(icon: "receipt-item", description: "Total amount", amount: result.totalAmount, isMain: true)
                                     InfoRectangle(icon: "money-send", description: "Currently paying", amount: result.currentlyPaying)
                                     InfoRectangle(icon: "coin", description: "Remaining months", amount: result.remainingMonths)
                                 }
