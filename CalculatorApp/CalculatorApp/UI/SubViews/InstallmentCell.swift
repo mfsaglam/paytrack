@@ -26,14 +26,13 @@ struct InstallmentCell: View {
                                 .fontWeight(.light)
                             Text("\(installment.paidMonths)/\(installment.totalMonths)")
                                 .foregroundColor(.red)
-                                .padding(.vertical, 2)
                                 .padding(.horizontal, 4)
                                 .background {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(.pink).opacity(0.1)
                                 }
                         }
-                        .padding(.vertical, -10)
+//                        .padding(.vertical, -10)
                         .font(.system(size: 10))
                     }
                     Spacer()
