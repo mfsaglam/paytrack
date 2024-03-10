@@ -2,6 +2,12 @@
 
 Paytrack is an iOS app designed to streamline the management of monthly payments and installments. With its intuitive interface and robust features, Paytrack empowers users to effortlessly track their financial commitments and stay on top of their payment schedules.
 
+## App Architecture
+
+Paytrack follows a modular and clean architecture design to ensure maintainability, scalability, and testability of the codebase. The architecture consists of the following components:
+
+![architecture](https://github.com/mfsaglam/paytrack/blob/feature/arch-image/architecture/paytrack_architecture.jpg)
+
 ## Core Functionality (v1.0)
 
 - **Create and Track Items**: Users can easily create new items in the app to represent their various financial obligations, such as monthly bills, loan payments, or installment plans.
