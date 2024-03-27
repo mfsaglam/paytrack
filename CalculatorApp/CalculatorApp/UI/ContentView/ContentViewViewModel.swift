@@ -33,6 +33,7 @@ final class ContentViewViewModel: ObservableObject {
         let installmentToDelete = installments[source]
         Task { @MainActor in
             try await presenter?.interactor.delete(installmentToDelete.id)
+            try await presentResults()
         }
     }
     

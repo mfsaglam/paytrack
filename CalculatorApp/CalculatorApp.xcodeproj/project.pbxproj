@@ -162,15 +162,8 @@
 				127C78252B388378004AC86D /* Preview Content */,
 				127C781E2B387940004AC86D /* UI */,
 				127C781D2B38792B004AC86D /* Main */,
-				12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */,
-				12C45E362B43ADEF0046F283 /* PresentableResult.swift */,
-				126230EB2B7D53F500202FD1 /* PresentableInstallment.swift */,
-				12C45E402B4ADF090046F283 /* InstallmentLoader.swift */,
-				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
-				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
-				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
-				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
-				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
+				12C4E1252BB4B57D00D607D8 /* Presentation */,
+				12C4E1242BB4B4CB00D607D8 /* Persistence */,
 			);
 			path = CalculatorApp;
 			sourceTree = "<group>";
@@ -179,10 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				12C0A88D2B430B9E00AE0960 /* Helpers */,
-				127C78202B387B6E004AC86D /* CalculatorAppTests.swift */,
-				12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */,
-				12C45E3E2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift */,
-				127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */,
+				12C4E1272BB4B62500D607D8 /* Main */,
+				12C4E1282BB4B62F00D607D8 /* Presentation */,
+				12C4E1262BB4B61900D607D8 /* Persistence */,
 			);
 			path = CalculatorAppTests;
 			sourceTree = "<group>";
@@ -211,7 +203,7 @@
 				127C781F2B387970004AC86D /* SubViews */,
 				126230ED2B7D70B900202FD1 /* ContentView */,
 				1212D48A2B8442DD0084F189 /* AddInstallmentView */,
-				12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */,
+				12C4E1232BB4B2B700D607D8 /* EmptyView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -249,6 +241,110 @@
 				12C0A88E2B430BBB00AE0960 /* Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		12C4E1232BB4B2B700D607D8 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */,
+			);
+			path = EmptyView;
+			sourceTree = "<group>";
+		};
+		12C4E1242BB4B4CB00D607D8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				12C4E12E2BB4B76600D607D8 /* CoreData InstallmentStore */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		12C4E1252BB4B57D00D607D8 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				12C4E12A2BB4B6C400D607D8 /* Presenter */,
+				12C4E1292BB4B68E00D607D8 /* Model */,
+				12C4E12B2BB4B70100D607D8 /* Interface */,
+				12C4E12D2BB4B73E00D607D8 /* Local Installment Loader */,
+				12C4E12C2BB4B73000D607D8 /* Interactor */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		12C4E1262BB4B61900D607D8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		12C4E1272BB4B62500D607D8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				127C78202B387B6E004AC86D /* CalculatorAppTests.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		12C4E1282BB4B62F00D607D8 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */,
+				12C45E3E2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		12C4E1292BB4B68E00D607D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				126230EB2B7D53F500202FD1 /* PresentableInstallment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12C4E12A2BB4B6C400D607D8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */,
+				12C45E362B43ADEF0046F283 /* PresentableResult.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		12C4E12B2BB4B70100D607D8 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				12C45E402B4ADF090046F283 /* InstallmentLoader.swift */,
+				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		12C4E12C2BB4B73000D607D8 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		12C4E12D2BB4B73E00D607D8 /* Local Installment Loader */ = {
+			isa = PBXGroup;
+			children = (
+				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
+			);
+			path = "Local Installment Loader";
+			sourceTree = "<group>";
+		};
+		12C4E12E2BB4B76600D607D8 /* CoreData InstallmentStore */ = {
+			isa = PBXGroup;
+			children = (
+				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
+				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
+			);
+			path = "CoreData InstallmentStore";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
