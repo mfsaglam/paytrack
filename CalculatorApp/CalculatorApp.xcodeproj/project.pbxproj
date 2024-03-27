@@ -172,10 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				12C0A88D2B430B9E00AE0960 /* Helpers */,
-				127C78202B387B6E004AC86D /* CalculatorAppTests.swift */,
-				12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */,
-				12C45E3E2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift */,
-				127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */,
+				12C4E1272BB4B62500D607D8 /* Main */,
+				12C4E1282BB4B62F00D607D8 /* Presentation */,
+				12C4E1262BB4B61900D607D8 /* Persistence */,
 			);
 			path = CalculatorAppTests;
 			sourceTree = "<group>";
@@ -271,6 +270,31 @@
 				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
 				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
 				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		12C4E1262BB4B61900D607D8 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				127334D12B6E0F07005AA3DE /* CoreDataInstallmentStoreTests.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		12C4E1272BB4B62500D607D8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				127C78202B387B6E004AC86D /* CalculatorAppTests.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		12C4E1282BB4B62F00D607D8 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				12C0A88B2B42A32400AE0960 /* CalculationResultsPresenterTests.swift */,
+				12C45E3E2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
