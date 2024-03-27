@@ -254,8 +254,7 @@
 		12C4E1242BB4B4CB00D607D8 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
-				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
+				12C4E12E2BB4B76600D607D8 /* CoreData InstallmentStore */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -263,13 +262,11 @@
 		12C4E1252BB4B57D00D607D8 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */,
-				12C45E362B43ADEF0046F283 /* PresentableResult.swift */,
+				12C4E12A2BB4B6C400D607D8 /* Presenter */,
 				12C4E1292BB4B68E00D607D8 /* Model */,
-				12C45E402B4ADF090046F283 /* InstallmentLoader.swift */,
-				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
-				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
-				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
+				12C4E12B2BB4B70100D607D8 /* Interface */,
+				12C4E12D2BB4B73E00D607D8 /* Local Installment Loader */,
+				12C4E12C2BB4B73000D607D8 /* Interactor */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -305,6 +302,49 @@
 				126230EB2B7D53F500202FD1 /* PresentableInstallment.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		12C4E12A2BB4B6C400D607D8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */,
+				12C45E362B43ADEF0046F283 /* PresentableResult.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		12C4E12B2BB4B70100D607D8 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				12C45E402B4ADF090046F283 /* InstallmentLoader.swift */,
+				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		12C4E12C2BB4B73000D607D8 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		12C4E12D2BB4B73E00D607D8 /* Local Installment Loader */ = {
+			isa = PBXGroup;
+			children = (
+				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
+			);
+			path = "Local Installment Loader";
+			sourceTree = "<group>";
+		};
+		12C4E12E2BB4B76600D607D8 /* CoreData InstallmentStore */ = {
+			isa = PBXGroup;
+			children = (
+				127334D32B6FB1A5005AA3DE /* CoreDataInstallmentStore.swift */,
+				127334D72B701593005AA3DE /* Installment.xcdatamodeld */,
+			);
+			path = "CoreData InstallmentStore";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
