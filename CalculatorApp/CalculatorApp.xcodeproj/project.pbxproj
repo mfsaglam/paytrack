@@ -265,7 +265,7 @@
 			children = (
 				12C45E342B43AB610046F283 /* CalculatorResultsPresenter.swift */,
 				12C45E362B43ADEF0046F283 /* PresentableResult.swift */,
-				126230EB2B7D53F500202FD1 /* PresentableInstallment.swift */,
+				12C4E1292BB4B68E00D607D8 /* Model */,
 				12C45E402B4ADF090046F283 /* InstallmentLoader.swift */,
 				12C45E422B4ADF510046F283 /* InstallmentStore.swift */,
 				12C45E462B4ADFBD0046F283 /* LocalInstallmentLoader.swift */,
@@ -297,6 +297,14 @@
 				12C45E3E2B4ACE4B0046F283 /* LocalInstallmentLoaderTests.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		12C4E1292BB4B68E00D607D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				126230EB2B7D53F500202FD1 /* PresentableInstallment.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
