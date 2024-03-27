@@ -211,7 +211,7 @@
 				127C781F2B387970004AC86D /* SubViews */,
 				126230ED2B7D70B900202FD1 /* ContentView */,
 				1212D48A2B8442DD0084F189 /* AddInstallmentView */,
-				12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */,
+				12C4E1232BB4B2B700D607D8 /* EmptyView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -249,6 +249,14 @@
 				12C0A88E2B430BBB00AE0960 /* Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		12C4E1232BB4B2B700D607D8 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				12C0A8892B3BE80A00AE0960 /* EmptyListView.swift */,
+			);
+			path = EmptyView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
