@@ -24,6 +24,7 @@ class AddInstallmentViewViewModel: ObservableObject {
         guard !name.isEmpty && 
                 !totalPrice.isEmpty && totalPrice.isConvertibleToDouble &&
                 !monthlyPayment.isEmpty && monthlyPayment.isConvertibleToDouble &&
+                !monthlyPayment.isZeroAfterDoubleConversion() &&
                 !paymentDate.isEmpty && paymentDate.isConvertibleToInt
         else {
             return false
@@ -52,9 +53,15 @@ extension String {
     var isConvertibleToDouble: Bool {
         return Double(self) != nil
     }
-}
 
-extension String {
+    func isZeroAfterDoubleConversion() -> Bool {
+        if let doubleValue = Double(self) {
+            return doubleValue == 0.0
+        } else {
+            return false
+        }
+    }
+
     var isConvertibleToInt: Bool {
         return Int(self) != nil
     }
