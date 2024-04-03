@@ -24,6 +24,7 @@ class AddInstallmentViewViewModel: ObservableObject {
         guard !name.isEmpty && 
                 !totalPrice.isEmpty && totalPrice.isConvertibleToDouble &&
                 !monthlyPayment.isEmpty && monthlyPayment.isConvertibleToDouble &&
+                !monthlyPayment.isZeroAfterDoubleConversion() &&
                 !paymentDate.isEmpty && paymentDate.isConvertibleToInt
         else {
             return false
@@ -45,17 +46,5 @@ class AddInstallmentViewViewModel: ObservableObject {
         Task { @MainActor in
             try await interactor?.save(installment)
         }
-    }
-}
-
-extension String {
-    var isConvertibleToDouble: Bool {
-        return Double(self) != nil
-    }
-}
-
-extension String {
-    var isConvertibleToInt: Bool {
-        return Int(self) != nil
     }
 }

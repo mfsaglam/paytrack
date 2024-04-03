@@ -48,9 +48,7 @@ struct ContentView: View {
                 )
             }
             .onAppear() {
-                Task { @MainActor in
-                    try await viewModel.presentResults()
-                }
+                viewModel.presentResults()
             }
             .navigationTitle("My Installments")
             .toolbar {

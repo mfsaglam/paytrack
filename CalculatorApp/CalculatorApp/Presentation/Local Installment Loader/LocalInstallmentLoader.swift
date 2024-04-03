@@ -26,4 +26,10 @@ class LocalInstallmentLoader: InstallmentLoader {
     func delete(_ id: UUID) async throws {
         try await store.delete(id)
     }
+    
+    func delete(_ installments: [Installment]) async throws {
+        for installment in installments {
+            try await store.delete(installment.id)
+        }
+    }
 }

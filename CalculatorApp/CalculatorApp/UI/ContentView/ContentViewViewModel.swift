@@ -21,10 +21,12 @@ final class ContentViewViewModel: ObservableObject {
         self.presenter = presenter
     }
     
-    func presentResults() async throws {
-        if let (result, installments) = try await presenter?.presentResults() {
-            self.result = result
-            self.installments = installments
+    func presentResults() {
+        Task { @MainActor in
+            if let (result, installments) = try await presenter?.presentResults() {
+                self.result = result
+                self.installments = installments
+            }
         }
     }
     
@@ -33,8 +35,8 @@ final class ContentViewViewModel: ObservableObject {
         let installmentToDelete = installments[source]
         Task { @MainActor in
             try await presenter?.interactor.delete(installmentToDelete.id)
-            try await presentResults()
         }
+        presentResults()
     }
     
     private init(result: PresentableResult, installments: [PresentableInstallment]) {
