@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1212D48C2B8443070084F189 /* AddInstallmentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D48B2B8443070084F189 /* AddInstallmentViewViewModel.swift */; };
 		1212D48E2B8A907D0084F189 /* CalculationResultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */; };
+		123FEEF22BBCF7BB001B3BE1 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123FEEF12BBCF7BB001B3BE1 /* Preview.swift */; };
 		12433DCB2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12433DCA2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift */; };
 		12433DCD2B2EF4DB00FB9FF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */; };
 		12433DCF2B2EF4DC00FB9FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12433DCE2B2EF4DC00FB9FF2 /* Assets.xcassets */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		1212D48B2B8443070084F189 /* AddInstallmentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstallmentViewViewModel.swift; sourceTree = "<group>"; };
 		1212D48D2B8A907D0084F189 /* CalculationResultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationResultsInteractor.swift; sourceTree = "<group>"; };
+		123FEEF12BBCF7BB001B3BE1 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		12433DC72B2EF4DB00FB9FF2 /* CalculatorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12433DCA2B2EF4DB00FB9FF2 /* CalculatorAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorAppApp.swift; sourceTree = "<group>"; };
 		12433DCC2B2EF4DB00FB9FF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,7 +161,6 @@
 		12433DC92B2EF4DB00FB9FF2 /* CalculatorApp */ = {
 			isa = PBXGroup;
 			children = (
-				127C78252B388378004AC86D /* Preview Content */,
 				127C781E2B387940004AC86D /* UI */,
 				127C781D2B38792B004AC86D /* Main */,
 				12C4E1252BB4B57D00D607D8 /* Presentation */,
@@ -200,6 +201,7 @@
 		127C781E2B387940004AC86D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				127C78252B388378004AC86D /* Preview Content */,
 				127C781F2B387970004AC86D /* SubViews */,
 				126230ED2B7D70B900202FD1 /* ContentView */,
 				1212D48A2B8442DD0084F189 /* AddInstallmentView */,
@@ -223,6 +225,7 @@
 		127C78252B388378004AC86D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				123FEEF12BBCF7BB001B3BE1 /* Preview.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				12433DCD2B2EF4DB00FB9FF2 /* ContentView.swift in Sources */,
 				12C45E432B4ADF510046F283 /* InstallmentStore.swift in Sources */,
 				1212D48C2B8443070084F189 /* AddInstallmentViewViewModel.swift in Sources */,
+				123FEEF22BBCF7BB001B3BE1 /* Preview.swift in Sources */,
 				12C45E372B43ADEF0046F283 /* PresentableResult.swift in Sources */,
 				1212D48E2B8A907D0084F189 /* CalculationResultsInteractor.swift in Sources */,
 				126DD1B12B2FE8AB0030F6D9 /* InfoRectangle.swift in Sources */,
@@ -657,7 +661,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CalculatorApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CalculatorApp/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = RPQ3VF2JBZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -687,7 +691,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CalculatorApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CalculatorApp/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = RPQ3VF2JBZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
