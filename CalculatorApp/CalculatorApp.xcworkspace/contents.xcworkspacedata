@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:CalculatorApp/Installment+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:CalculatorApp/Installment+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../Calculator/InstallmentCalculator.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:CalculatorApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../CalculatorApp.xctestplan">
+   </FileRef>
+</Workspace>
