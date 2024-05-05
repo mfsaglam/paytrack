@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject var viewModel: ContentViewViewModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 if viewModel.isEmpty {
                     EmptyListView()
