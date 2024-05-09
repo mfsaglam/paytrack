@@ -2,7 +2,7 @@
 
 # Installment Tool
 
-Installment Tool is an iOS app designed to streamline the management of monthly payments and installments. With its intuitive interface and robust features, Paytrack empowers users to effortlessly track their financial commitments and stay on top of their payment schedules.
+Installment Tool is an iOS app designed to streamline the management of monthly payments and installments. With its intuitive interface and robust features, Installment Tool empowers users to effortlessly track their financial commitments and stay on top of their payment schedules.
 
 ## App Architecture
 
