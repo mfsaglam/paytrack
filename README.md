@@ -26,13 +26,9 @@ Installment Tool follows a modular and clean architecture design to ensure maint
 
 With Installment Tool, managing monthly payments and installments has never been easier. Stay organized, stay on track, and take control of your finances with Installment Tool.
 
-## Installation
-
-\<As our app is available on the App Store, we will provide instructions on how users can download and install it from the App Store.\>
-
 ## App Store Link
 
-You can download Installment Tool from the [App Store](#) here.
+You can download Installment Tool from the [App Store](https://apps.apple.com/tr/app/installment-tool/id6502232374) here.
 
 ## Contributing
 
